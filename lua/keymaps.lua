@@ -20,3 +20,4 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- MAPS FOR THE FLOATERM
 vim.cmd[[nnoremap <leader>t :FloatermToggle<CR>]]
 vim.cmd[[tnoremap <leader>t <C-\><C-n>:FloatermToggle<CR>]]
+vim.keymap.set('n', '<leader>un', ':UndotreeToggle<CR>', {noremap = true})

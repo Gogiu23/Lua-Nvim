@@ -18,6 +18,46 @@ function _G.check_back_space()
     local col = vim.fn.col('.') - 1
     return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
+
+//LSP C language family
+"languageserver": {
+  "ccls": {
+    "command": "ccls",
+    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+    "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+  }
+}
+"initializationOptions": {
+  "cache": {
+    "directory": "/tmp/ccls"
+  },
+  "clang": {
+      // make sure you have installed commandLineTools
+    "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
+    "extraArgs": [
+      "-isystem",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"
+    ]
+  }
+},
+"languageserver": {
+  "cquery": {
+    "command": "cquery",
+    "args": ["--log-file=/tmp/cq.log"],
+    "filetypes": ["c", "cc", "cpp", "c++"],
+    "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git/", ".hg/"],
+    "initializationOptions": {
+      "cacheDirectory": "/tmp/cquery"
+    }
+  }
+}
 "languageserver": {
   "clangd": {
     "command": "clangd",

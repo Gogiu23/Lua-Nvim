@@ -43,6 +43,4 @@ require('lualine').setup {
 }
 require('keymaps')
 require('markdown')
---require('markdown-preview').setup()
 vim.cmd[[colorscheme tokyonight-night]]
---vim.cmd[[let g:ruby_host_prog="/usr/bin/neovim-ruby-host.ruby2.4"]]
