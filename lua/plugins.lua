@@ -41,4 +41,12 @@ require('packer').startup(function(use)
 		"williamboman/mason.nvim",
 		run = ":MasonUpdate" -- :MasonUpdate updates registry contents
 	}
+	use({
+		"dnlhc/glance.nvim",
+		config = function()
+			require('glance').setup({
+				-- your configuration
+			})
+		end,
+	})
 end)

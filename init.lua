@@ -41,6 +41,5 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
-require('keymaps')
 require('markdown')
 vim.cmd[[colorscheme tokyonight-night]]

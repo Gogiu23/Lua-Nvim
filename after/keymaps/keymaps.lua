@@ -21,3 +21,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.cmd[[nnoremap <leader>t :FloatermToggle<CR>]]
 vim.cmd[[tnoremap <leader>t <C-\><C-n>:FloatermToggle<CR>]]
 vim.keymap.set('n', '<leader>un', ':UndotreeToggle<CR>', {noremap = true})
+
+--Commenter in C/C++
+vim.keymap.set('n', 'cc', ':normal Hi//jk<CR>', {})
+vim.keymap.set('n', '.c', ':normal Hxxj<CR>', {})
