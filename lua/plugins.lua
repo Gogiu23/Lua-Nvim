@@ -1,26 +1,36 @@
 require('packer').startup(function(use)
+--PACKER
 	use 'wbthomason/packer.nvim'
+--LUALINE
 	use {
 		'nvim-lualine/lualine.nvim',
 	}
+
+--COC
 	use {'neoclide/coc.nvim', branch = 'release'}
+
+--NVIM TREE
 	use {
 		'nvim-tree/nvim-tree.lua',
 		requires = {
 			'nvim-tree/nvim-web-devicons', -- optional
 		},
 	}
+
+--COLORSCHEME
 	use {
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {},
 	}
+--TELESCOPE
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+--TREESITTER
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = function()
@@ -28,17 +38,23 @@ require('packer').startup(function(use)
 			ts_update()
 		end,
 	}
+--VIM FLOATERM
 	use 'voldikss/vim-floaterm'
-	-- install without yarn or npm
+
+--MARKDOWN PREVIEW
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = function() vim.fn["mkdp#util#install"]() end,
 	})
 
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+--UNDOTREE
 	use 'mbbill/undotree'
+--MASON
 	use {
 		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
 		run = ":MasonUpdate" -- :MasonUpdate updates registry contents
 	}
 	use({
@@ -49,4 +65,5 @@ require('packer').startup(function(use)
 			})
 		end,
 	})
+	use {'tpope/vim-fugitive'}
 end)
