@@ -18,12 +18,15 @@ require('packer').startup(function(use)
 	}
 
 --COLORSCHEME
+	--TOKYO NIGHT
 	use {
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {},
 	}
+	--OCEANICNEXT
+	use {'mhartington/oceanic-next'}
 --TELESCOPE
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -65,5 +68,10 @@ require('packer').startup(function(use)
 			})
 		end,
 	})
+
+--VIM FUGITIVE
 	use {'tpope/vim-fugitive'}
 end)
+
+--FORMATTER
+require('packer').use { 'mhartington/formatter.nvim' }

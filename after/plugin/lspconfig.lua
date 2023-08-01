@@ -6,6 +6,8 @@ lspconfig.clangd.setup {
     ['clangd'] = {
 	autostart = true},
   },
+  lspconfig.kotlin_language_server.setup{},
+  lspconfig.marksman.setup{},
 }
 
 

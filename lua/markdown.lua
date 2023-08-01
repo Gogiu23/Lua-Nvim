@@ -6,7 +6,7 @@ let g:mkdp_auto_start = 0
 " set to 1, the nvim will auto close current preview window when change
 " from markdown buffer to another buffer
 " default: 1
-let g:mkdp_auto_close = 1
+let g:mkdp_auto_close = 0
 
 " set to 1, the vim will refresh markdown when save the buffer or
 " leave from insert mode, default 0 is auto refresh markdown as you edit or
@@ -66,7 +66,7 @@ let g:mkdp_preview_options = {
     \ 'uml': {},
     \ 'maid': {},
     \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
+    \ 'sync_scroll_type': 'relative',
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {},
     \ 'flowchart_diagrams': {},
@@ -96,4 +96,4 @@ let g:mkdp_filetypes = ['markdown']
 
 " set default theme (dark or light)
 " By default the theme is define according to the preferences of the system
-let g:mkdp_theme = 'dark']]
+let g:mkdp_theme = 'light']]

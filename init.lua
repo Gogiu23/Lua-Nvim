@@ -3,4 +3,6 @@ require('plugins')
 require('markdown')
 require('keymaps')
 require("lspconfig").clangd.setup{}
-vim.cmd[[colorscheme tokyonight-night]]
+require'lspconfig'.kotlin_language_server.setup{}
+require'lspconfig'.marksman.setup{}
+vim.cmd[[colorscheme OceanicNext]]
