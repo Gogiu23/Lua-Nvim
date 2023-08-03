@@ -42,3 +42,4 @@ vim.keymap.set('n', 'gM', '<CMD>Glance implementations<CR>')
 --IMPLEMENTATION VIM FUGITIVE
 vim.api.nvim_set_keymap('n', '<leader>g', '<CMD>Git<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>gc', '<CMD>Git commit<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>g+', '<CMD>Git push<CR>', {noremap = true})
