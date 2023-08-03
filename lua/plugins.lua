@@ -71,7 +71,7 @@ require('packer').startup(function(use)
 
 --VIM FUGITIVE
 	use {'tpope/vim-fugitive'}
-end)
 
---FORMATTER
-require('packer').use { 'mhartington/formatter.nvim' }
+--VIM FUGITIVE COMPLETE GBROWSE
+	use {'tpope/vim-rhubarb'}
+end)

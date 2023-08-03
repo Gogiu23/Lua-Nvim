@@ -1,9 +1,16 @@
 -- MAPS FOR THE COMMON USE
-vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', {noremap = true}) --save with Ctrl-s
+--MAPS FOR EVOLUTE THE (JKHL) KEYNOTES
 vim.api.nvim_set_keymap('n', 'L', '<end>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'H', '<home>', {noremap = true})
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true})
-vim.cmd[[nnoremap <leader>e :source ~/.config/nvim/init.lua<CR>]]
+vim.api.nvim_set_keymap('n', 'J', ':normal 10j<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', 'K', ':normal 10k<CR>', {noremap = true})
+
+--vim.cmd[[nnoremap <leader>e :source ~/.config/nvim/init.lua<CR>]]
+vim.cmd[[nnoremap <leader>e :luafile %<CR>]]
+
+--MOVE VISUAL STRINGS TROUGHT THE SCREEN
 vim.cmd[[vnoremap <S-j> :m '>+1<CR>gv=gv]] 
 vim.cmd[[vnoremap <S-k> :m '<-2<CR>gv=gv]]
 
@@ -31,3 +38,6 @@ vim.keymap.set('n', 'gD', '<CMD>Glance definitions<CR>')
 vim.keymap.set('n', 'gR', '<CMD>Glance references<CR>')
 vim.keymap.set('n', 'gY', '<CMD>Glance type_definitions<CR>')
 vim.keymap.set('n', 'gM', '<CMD>Glance implementations<CR>')
+
+--IMPLEMENTATION VIM FUGITIVE
+vim.api.nvim_set_keymap('n', '<leader>g', '<CMD>Git<CR>', {noremap = true})
