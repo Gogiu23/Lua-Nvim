@@ -35,7 +35,7 @@ let g:mkdp_open_ip = ''
 " valid: `/path/with\ space/xxx`
 " invalid: `/path/with\\ space/xxx`
 " default: ''
-let g:mkdp_browser = ''
+let g:mkdp_browser = 'safari'
 
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
@@ -66,11 +66,11 @@ let g:mkdp_preview_options = {
     \ 'uml': {},
     \ 'maid': {},
     \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'relative',
+    \ 'sync_scroll_type': 'middle',
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {},
     \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
+    \ 'content_editable': v:true,
     \ 'disable_filename': 0,
     \ 'toc': {}
     \ }
