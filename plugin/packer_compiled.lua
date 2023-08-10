@@ -85,6 +85,11 @@ _G.packer_plugins = {
     path = "/Users/alessandrodominici/.local/share/nvim/site/pack/packer/start/glance.nvim",
     url = "https://github.com/dnlhc/glance.nvim"
   },
+  ["kotlin-vim"] = {
+    loaded = true,
+    path = "/Users/alessandrodominici/.local/share/nvim/site/pack/packer/start/kotlin-vim",
+    url = "https://github.com/udalov/kotlin-vim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/alessandrodominici/.local/share/nvim/site/pack/packer/start/lualine.nvim",

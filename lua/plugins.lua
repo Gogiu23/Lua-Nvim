@@ -74,4 +74,6 @@ require('packer').startup(function(use)
 
 --VIM FUGITIVE COMPLETE GBROWSE
 	use {'tpope/vim-rhubarb'}
+
+	use {'udalov/kotlin-vim'}
 end)
