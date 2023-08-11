@@ -2,7 +2,7 @@ local DEFAULT_SETTINGS = {
     -- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer@nightly", "lua_ls" }
     -- This setting has no relation with the `automatic_installation` setting.
     ---@type string[]
-    ensure_installed = {"clangd"},
+    ensure_installed = {"clangd", "kotlin_language_server"},
 
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
     -- This setting has no relation with the `ensure_installed` setting.
@@ -12,7 +12,7 @@ local DEFAULT_SETTINGS = {
     --   - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
     --       Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
     ---@type boolean
-    automatic_installation = false,
+    automatic_installation = true,
 
     -- See `:h mason-lspconfig.setup_handlers()`
     ---@type table<string, fun(server_name: string)>?

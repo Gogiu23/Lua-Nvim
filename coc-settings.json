@@ -1,6 +1,6 @@
 {
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/16.0.2/clangd_16.0.2/bin/clangd"
-}-- Some servers have issues with backup files, see #649
+}
 vim.opt.backup = false
 vim.opt.writebackup = false
 
@@ -19,7 +19,7 @@ function _G.check_back_space()
     return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
-//LSP C language family
+--LSP C language family
 "languageserver": {
   "ccls": {
     "command": "ccls",
@@ -31,6 +31,12 @@ end
         }
       }
   }
+      "kotlin": {
+		  "command": "~/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+            "filetypes": ["kotlin"],
+			"rootPatterns": ["root_pattern("settings.gradle")"],
+        }
+    }
 }
 "initializationOptions": {
   "cache": {
