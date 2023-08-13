@@ -1,3 +1,4 @@
+--vim.cmd[[source ./lua/settings]]
 require('settings')
 require('plugins')
 require('markdown')
@@ -9,4 +10,4 @@ require'lspconfig'.kotlin_language_server.setup{
     capabilities = capabilities,
 }
 require'lspconfig'.marksman.setup{}
-vim.cmd[[colorscheme OceanicNext]]
+vim.cmd[[colorscheme tokyonight-moon]]

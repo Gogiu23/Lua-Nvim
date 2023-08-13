@@ -7,8 +7,25 @@ vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'J', ':normal 10j<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'K', ':normal 10k<CR>', {noremap = true})
 
---vim.cmd[[nnoremap <leader>e :source ~/.config/nvim/init.lua<CR>]]
-vim.cmd[[nnoremap <leader>e :luafile %<CR>]]
+vim.cmd[[
+  function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction
+
+  " Insert <tab> when previous text is space, refresh completion if not.
+  inoremap <silent><expr> <TAB>
+	\ coc#pum#visible() ? coc#pum#next(1):
+	\ CheckBackspace() ? "\<Tab>" :
+	\ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]]
+vim.cmd[[ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]]
+
+vim.api.nvim_set_keymap('n', ']', 'gt', {noremap = true})
+vim.api.nvim_set_keymap('n', '[', 'gT', {noremap = true})
+vim.cmd[[nnoremap <leader>e :source ~/.config/nvim/init.lua<CR>]]
+vim.api.nvim_set_keymap('n', '<leader>ev', ':vsplit $HOME/.config/nvim/init.lua<CR>', {noremap = true})
 
 --MOVE VISUAL STRINGS TROUGHT THE SCREEN
 vim.cmd[[vnoremap <S-j> :m '>+1<CR>gv=gv]] 
