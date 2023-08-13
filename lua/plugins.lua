@@ -75,5 +75,9 @@ require('packer').startup(function(use)
 --VIM FUGITIVE COMPLETE GBROWSE
 	use {'tpope/vim-rhubarb'}
 
+-- KOTLIN LANGUAGE SERVICE
 	use {'udalov/kotlin-vim'}
+
+--NERDCOMMENTER
+	use {'preservim/nerdcommenter'} 
 end)

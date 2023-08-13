@@ -110,6 +110,11 @@ _G.packer_plugins = {
     path = "/Users/alessandrodominici/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  nerdcommenter = {
+    loaded = true,
+    path = "/Users/alessandrodominici/.local/share/nvim/site/pack/packer/start/nerdcommenter",
+    url = "https://github.com/preservim/nerdcommenter"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/alessandrodominici/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
