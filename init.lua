@@ -1,4 +1,4 @@
---vim.cmd[[source ./lua/keymaps.lua]]
+--vim.cmd[[source ./lua/settings.lua]]
 require('settings')
 require('plugins')
 require('markdown')
