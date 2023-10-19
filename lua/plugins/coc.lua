@@ -1,4 +1,4 @@
 return {
-	'neoclide/coc.nvim', 
+	'neoclide/coc.nvim',
 	branch = 'release',
 }

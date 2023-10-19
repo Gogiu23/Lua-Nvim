@@ -1,5 +1,8 @@
 -- MAPS FOR THE COMMON USE
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', {noremap = true}) --save with Ctrl-s
+
+--AUTOINDENT
+vim.cmd[[nnoremap <leader><leader> :normal gg=G\'<CR>]]
 --MAPS FOR EVOLUTE THE (JKHL) KEYNOTES
 vim.api.nvim_set_keymap('n', 'L', '<end>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'H', '<home>', {noremap = true})
@@ -14,23 +17,23 @@ vim.cmd[[nmap <silent> gi <Plug>(coc-implementation)]]
 vim.cmd[[nmap <silent> gr <Plug>(coc-references)]]
 vim.cmd[[  
 function! CheckBackspace() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-  endfunction
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
-  " Insert <tab> when previous text is space, refresh completion if not.
-  inoremap <silent><expr> <TAB>
-	\ coc#pum#visible() ? coc#pum#next(1):
-	\ CheckBackspace() ? "\<Tab>" :
-	\ coc#refresh()
-  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]]
+" Insert <tab> when previous text is space, refresh completion if not.
+inoremap <silent><expr> <TAB>
+\ coc#pum#visible() ? coc#pum#next(1):
+\ CheckBackspace() ? "\<Tab>" :
+\ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]]
 vim.cmd[[ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
-				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]]
+\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]]
 
 -- vim.api.nvim_set_keymap('n', ']', 'gt', {noremap = true})
 -- vim.api.nvim_set_keymap('n', '[', 'gT', {noremap = true})
-vim.cmd[[nnoremap ] gt <CR>]]
-vim.cmd[[nnoremap [ gT <CR>]]
+-- vim.cmd[[nnoremap ] gt <CR>]]
+-- vim.cmd[[nnoremap [ gT <CR>]]
 vim.cmd[[nnoremap <leader>e :source ~/.config/nvim/init.lua<CR>]]
 vim.api.nvim_set_keymap('n', '<leader>ev', ':vsplit $HOME/.config/nvim/init.lua<CR>', {noremap = true})
 
