@@ -2,7 +2,7 @@
 vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', {noremap = true}) --save with Ctrl-s
 
 --AUTOINDENT
-vim.cmd[[nnoremap <leader><leader> :normal gg=G\'<CR>]]
+vim.cmd[[nnoremap <leader><leader> :normal gg=G''<CR>]]
 --MAPS FOR EVOLUTE THE (JKHL) KEYNOTES
 vim.api.nvim_set_keymap('n', 'L', '<end>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'H', '<home>', {noremap = true})
