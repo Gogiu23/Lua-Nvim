@@ -1,0 +1,15 @@
+{
+  "name": "nvim",
+  "version": "1.0.0",
+  "description": "My Personal config in neovim written 100% in lua",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "coc-html": "^1.8.0"
+  }
+}

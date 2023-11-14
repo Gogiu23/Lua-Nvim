@@ -4,6 +4,6 @@ return {
 	{'udalov/kotlin-vim'},
 	{'preservim/nerdcommenter'},
 	{'turbio/bracey.vim'},
-	{'git@github.com:gregsexton/MatchTag.git'},
+	{'gregsexton/MatchTag'},
 	{'AndrewRadev/tagalong.vim'},
 }

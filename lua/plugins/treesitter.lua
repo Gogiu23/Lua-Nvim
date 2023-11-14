@@ -14,11 +14,15 @@ return {
 				"elixir",
 				"heex",
 				"javascript",
-				-- "html"
+				"html"
 			},
 			sync_install = false,
-			highlight = { enable = true },
-			-- indent = { enable = true },
+			highlight = { 
+				enable = true 
+			},
+			autotag = {
+				enable = true,
+			},
 		})
-	end
+	end,
 }
