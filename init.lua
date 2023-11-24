@@ -5,4 +5,4 @@ require('plugins')
 require('markdown')
 require('nerdcommenter')
 require('keymaps')
-vim.cmd[[colorscheme tokyonight-moon]]
+vim.cmd 'colorscheme tokyonight-moon'

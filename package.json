@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vscode/codicons": "^0.0.35",
     "coc-html": "^1.8.0"
   }
 }
