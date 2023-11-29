@@ -2,10 +2,9 @@ return {
 	"nvim-tree/nvim-tree.lua",
 	version = "*",
 	lazy = false,
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
+	dependencies = {},
 	config = function()
+		vim.cmd[[nnoremap <space> :NvimTreeToggle<CR>]]
 		require("nvim-tree").setup {
 			on_attach = "default",
 			hijack_cursor = false,
