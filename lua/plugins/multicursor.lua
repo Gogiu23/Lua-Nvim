@@ -1,7 +1,10 @@
 return
 {
 	"smoka7/multicursors.nvim",
-	event = "VeryLazy",
+	keys = {
+		{"<leader>m", "<cmd>MCstart<CR>", desc = {"start multicursor"} }
+	},
+	-- event = "VeryLazy",
 	dependencies = {
 		'smoka7/hydra.nvim',
 	},

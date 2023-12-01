@@ -1,4 +1,12 @@
 {
+	"coc.source.file.enable": true,
+	"coc.source.around.enable": true,
+	"coc.source.buffer.enable": true,
+	"coc.source.dictionary.enable": true,
+	"coc.source.tag.enable": true,
+	"coc.source.omni.enable": true,
+	"coc.source.omni.filetypes": ["txt"],
+
 	"diagnostic.refreshOnInsertMode": true,
 	"diagnostic.hintSign": "ღ",
 	"diagnostic.infoSign": "ʘ",

@@ -1,7 +1,9 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	version = "*",
-	lazy = false,
+	keys = {
+		{ "<space>", "NvimTreeToggle", desc = "NvimTree"},
+	},
 	dependencies = {},
 	config = function()
 		vim.cmd[[nnoremap <space> :NvimTreeToggle<CR>]]
