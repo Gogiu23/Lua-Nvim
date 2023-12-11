@@ -3,11 +3,12 @@ return {
 	event = "InsertEnter",
 	branch = 'release',
 	config = function ()
-		vim.cmd[[nmap <silent> gd <Plug>(coc-definition)]]
-		vim.cmd[[nmap <silent> gy <Plug>(coc-type-definition)]]
-		vim.cmd[[nmap <silent> gi <Plug>(coc-implementation)]]
-		vim.cmd[[nmap <silent> gr <Plug>(coc-references)]]
-		vim.cmd[[  
+		local cmd = vim.cmd
+		cmd[[nmap <silent> gd <Plug>(coc-definition)]]
+		cmd[[nmap <silent> gy <Plug>(coc-type-definition)]]
+		cmd[[nmap <silent> gi <Plug>(coc-implementation)]]
+		cmd[[nmap <silent> gr <Plug>(coc-references)]]
+		cmd[[  
 		function! CheckBackspace() abort
 		let col = col('.') - 1
 		return !col || getline('.')[col - 1]  =~ '\s'
@@ -19,7 +20,7 @@ return {
 		\ CheckBackspace() ? "\<Tab>" :
 		\ coc#refresh()
 		inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]]
-		vim.cmd[[ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
+		cmd[[ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
 		\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]]
 	end
 }

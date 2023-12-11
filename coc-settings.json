@@ -30,11 +30,7 @@
 	"git.topRemovedSign.hlGroup": "GitGutterDelete",
 	"git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
 
-	"coc.preferences.formatOnSaveFiletypes": ["css"],
 	"prettier.statusItemText": "★ ",
-	"prettier.eslintIntegration": true,
-	"prettier.tslintIntegration": true,
-	"prettier.stylelintIntegration": false,
 
 	"suggest.completionItemKindLabels": {
 		"function": "",
@@ -64,7 +60,10 @@
 		"typeParameter": "",
 		"default": ""
 	},
-
 	"tsserver.enable": true,
 	"tsserver.disableAutomaticTypeAcquisition": true,
+
+	"sumneko-lua.enable": true,
+	"sumneko-lua.enableNvimLuaDev": true,
+	"Lua.codeLens.enable": true,
 }

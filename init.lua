@@ -1,5 +1,3 @@
---vim.cmd[[source ./lua/settings.lua]]
 require("config")
-require('settings')
-require('plugins')
-require('keymaps')
+-- vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme vscode]])
