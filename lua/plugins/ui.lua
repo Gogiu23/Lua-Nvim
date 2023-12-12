@@ -1,137 +1,23 @@
 return {
-	{
-		'akinsho/bufferline.nvim',
-		event = {"BufReadPre", "BufNewFile"},
-		version = "*",
-		config = function ()
-			local map = vim.keymap.set
-			local N = "n"
-			local opts = {noremap = "true"}
-
-			map(N, "<C-.>", "<cmd>BufferLineCycleNext<CR>", opts)
-			map(N, "<C-,>", "<cmd>BufferLineCyclePrev<CR>", opts)
-			map(N, "<C-c>", "<cmd>bdelete<CR>", opts)
-			require("bufferline").setup({
-				options = {
-					themable = false,
-					buffer_close_icon = "󰅙 ",
-					close_command = "bdelete %d",
-					close_icon = "󰅗",
-					indicator = {
-						icon = "󱋱 ",
-						style = "underline",
-					},
-					left_trunc_marker = "",
-					modified_icon = "󰽂",
-					max_name_length = 18,
-					max_prefix_length = 15,
-					truncate_names = true,
-					tab_size = 18,
-					diagnostics = "",
-					diagnostics_update_in_insert = false,
-					offsets = { { filetype = "NvimTree", text = "EXPLORER", text_align = "center" } },
-					right_mouse_command = "bdelete! %d",
-					right_trunc_marker = "",
-					show_close_icon = true,
-					show_tab_indicators = true,
-					color_icons = true,
-					show_buffer_icons = true,
-					show_buffer_close_icons = true,
-					always_show_bufferline = true,
-					sort_by = 'insert_after_current',
-					separator_style = {
-						"󱋱",
-						-- "slope",
-						-- "thick",
-						-- "thin",
-						-- { 'any', 'any' }
-					},
-					hover = {
-						enabled = true,
-						delay = 100,
-						reveal = {'close'}
-					},
-				},
-				highlights = {
-					fill = {
-						fg = "white",
-						bg = "#17202A",
-						-- bg = "#1f7aca",
-					},
-					tab = {
-						fg = "white",
-					},
-					tab_selected = {
-						fg = 'white',
-						bg = '#1E8449',
-					},
-					tab_close = {
-						fg = 'white',
-						bg = '#C0392B',
-					},
-					background = {
-						fg = "white",
-						bg = "#17202A",
-					},
-					buffer_visible = {
-						fg = "white",
-						bg = "#FD6C63",
-					},
-					buffer_selected = {
-						fg = "white",
-						bg = "#FD6C63",
-					},
-					separator = {
-						fg = "white",
-						bg = "#17202A",
-					},
-					separator_selected = {
-						fg = "white",
-						bg = "#FD6C63",
-					},
-					separator_visible = {
-						fg = "white",
-						bg = "#FD6C63",
-					},
-					close_button = {
-						fg = "white",
-						bg = "#17202A",
-					},
-					close_button_selected = {
-						fg = "#F4D03F",
-						bg = "#FD6C63",
-					},
-					close_button_visible = {
-						fg = { attribute = "fg", highlight = "Normal" },
-						bg = { attribute = "bg", highlight = "Normal" },
-					},
-					modified = {
-						fg = "white",
-						bg = "#FD6C63",
-					},
-					modified_visible = {
-						fg = "white",
-						bg = "#FD6C63",
-					},
-					modified_selected = {
-						fg = "white",
-						bg = "#FD6C63",
-					},
-				},
-			})
-		end
-	},
-
 	--lualine
 	{
 		'nvim-lualine/lualine.nvim',
 		event = {"BufreadPre", "BufNewFile"},
 		config = function()
+			local option = vim.opt
+			local map = vim.keymap.set
+			local N = "n"
+			local opt = {noremap = false, silent = true}
+
+			option.showtabline = 2
+			map(N, "<C-.>", "<cmd>bnext<CR>", opt)
+			map(N, "<C-,>", "<cmd>bprev<CR>", opt)
+			map(N, "<C-c", "<cmd>bdelete<CR>", opt)
 			local map = vim.keymap.set
 
 			local custom_fname = require('lualine.components.filename'):extend()
 			local highlight = require'lualine.highlight'
-			local default_status_colors = { saved = '#8FFC7B', modified = '#FD6C63' }
+			local default_status_colors = { saved = '#239B56', modified = '#922B21' }
 
 			function custom_fname:init(options)
 				custom_fname.super.init(self, options)
@@ -161,70 +47,107 @@ return {
 			require('lualine').setup({
 				options = {
 					globalstatus = true,
-					component_separators = '',
-					section_separators = '',
 					icons_enabled = true,
 					theme = 'auto',
+					section_separators = { left = '', right = '' },
+					-- component_separators = { left = '', right = '' },
+					-- component_separators = { left = '', right = ''},
+					component_separators = { left = '|', right = '󱋱'},
+					-- section_separators = { left = '', right = ''},
 					disabled_filetypes = {
 						statusline = {"dashboard"},
+						tabline = {"dasboard"},
+					},
+					refresh = {
+						statusline = 1000,
+						tabline = 1000,
 					},
 				},
 				sections = {
 					lualine_a = {
 						{
 							'mode',
-							icon = {'  '},
+							icons_enabled = true,
+							icon = "  "
 						},
 					},
 					lualine_b = {
 						{
 							'branch',
-							icon = {'  ', color={fg='white'}},
+							icon = {
+								' ',
+								color = {
+									fg = 'white',
+								},
+							},
 						},
-						{
-							'diagnostics',
-							sources = {'coc'},
-							sections = {'error', 'warn',},
-							update_in_insert = false,
-							always_visible = false,
-						},
+						'diff',
+						'diagnostics'
 					},
 					lualine_c = {
 						{
-							custom_fname,
+							'filename',
 							path = 4,
-							icon = {' '},
 							symbols = {
-								modified = ' 󰷥 ',
-								readonly = '󰷤 ',
-								newfile = '󰎔 '
-							}
+								modified = '󰽂 ',
+								readonly = '󱙃 ',
+							},
 						},
 					},
-					lualine_x = {'filetype'},
-					lualine_y = {'progress'},
+					lualine_x = {
+						{
+							'fileformat',
+							symbols = {
+								unix = '',
+							},
+						},
+						{
+							'filetype',
+							icon_only = true,
+						},
+					},
+					lualine_y = {
+						{
+							'progress',
+							icon = "",
+						},
+					},
 					lualine_z = {
 						{
 							'location',
-							icon = ''
+							icon = {"", color = {bold = true}},
 						},
+					},
+				},
+				tabline = {
+					lualine_a = {
+						{
+							'filetype',
+							icon_only = true,
+							icon = {align = 'right'},
+						},
+						{
+							'buffers',
+							mode = 0,
+							use_mode_colors = false,
+							symbols = {
+								modified = ' 󰽂 ',
+								alternate_file = '#',
+								directory =  ' ',
+							},
+						},
+					},
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = {
 						'searchcount',
-						"os.date(' %H:%M')",
-						"os.date(' %a %m %b  ')"
-					}
+						"os.date('󱑇 %H:%M')",
+						"os.date(' %a%m%b')",
+					},
 				},
-				extensions = {'nvim-tree', 'lazy'}
 			})
-			local lualine = {
-				lualine_b_normal = {
-					fg = white,
-					bg = "#FF6262",
-					bold = true
-				},
-			}
-			for hl, col in pairs(lualine) do
-				vim.api.nvim_set_hl(0, hl, col)
-			end
 		end,
 	},
 
@@ -291,4 +214,3 @@ return {
 		end,
 	},
 }
--- 					-- Icons for completion item kinds (see defaults at noice.config.icons.kinds)

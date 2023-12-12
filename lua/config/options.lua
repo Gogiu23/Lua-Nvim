@@ -1,4 +1,3 @@
-vim.g.loaded_netrwPlugin = 0
 local opt = vim.opt
 opt.termguicolors=true
 opt.splitright = true
@@ -23,6 +22,8 @@ opt.showmode = false
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
+opt.list = false
+opt.fillchars = { eob = " "}
 opt.pumblend = 10
 opt.pumheight = 10
 if vim.fn.has("nvim-0.10") == 1 then

@@ -11,7 +11,7 @@ return {
 			},
 			window = {
 				border = "single",
-				position = "top",
+				position = "bottom",
 				winblend = 10,
 			}
 		}
