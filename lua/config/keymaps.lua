@@ -1,19 +1,19 @@
 local map = vim.keymap.set
 local N = "n"
 local V = "v"
-local opts = {remap = true, silent = false}
+local opts = { remap = true, silent = false }
 
 --AUTOINDENT
-vim.cmd[[nnoremap <leader><leader> :normal gg=G''<CR>]]
+vim.cmd([[nnoremap <leader><leader> :normal gg=G''<CR>]])
 
 --MAPS FOR EVOLUTE THE (JKHL) KEYNOTES
-map({'n', 'v'}, 'L', '<end>', {noremap = true})
-map({'n', 'v'}, 'H', '<home>', {noremap = true})
-map("i", "jk", "<esc>", {desc = "exit"})
+map({ "n", "v" }, "L", "<end>", { noremap = true })
+map({ "n", "v" }, "H", "<home>", { noremap = true })
+map("i", "jk", "<esc>", { desc = "exit" })
 
 --MOVE VISUAL STRINGS TROUGHT THE SCREEN
-vim.cmd[[vnoremap <S-j> :m '>+1<CR>gv=gv]] 
-vim.cmd[[vnoremap <S-k> :m '<-2<CR>gv=gv]]
+vim.cmd([[vnoremap <C-Down> :m '>+1<CR>gv=gv]])
+vim.cmd([[vnoremap <C-Up> :m '<-2<CR>gv=gv]])
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -28,7 +28,7 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 --Toggle paste mode
-map( "n", "<leader>sp", "<cmd>set paste!<CR>", {desc = "pastetoggle"})
+map("n", "<leader>sp", "<cmd>set paste!<CR>", { desc = "pastetoggle" })
 
 --Toggle comments
 map(N, "<C-/>", "gcc", opts)

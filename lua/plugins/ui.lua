@@ -12,7 +12,7 @@ return {
 			option.showtabline = 2
 			map(N, "<C-.>", "<cmd>bnext<CR>", opt)
 			map(N, "<C-,>", "<cmd>bprev<CR>", opt)
-			map(N, "<C-c", "<cmd>bdelete<CR>", opt)
+			map(N, "<C-c>", "<cmd>bdelete<CR>", opt)
 			local map = vim.keymap.set
 
 			local custom_fname = require('lualine.components.filename'):extend()
@@ -48,7 +48,7 @@ return {
 				options = {
 					globalstatus = true,
 					icons_enabled = true,
-					theme = 'auto',
+					theme = 'OceanicNext',
 					section_separators = { left = '', right = '' },
 					-- component_separators = { left = '', right = '' },
 					-- component_separators = { left = '', right = ''},
@@ -86,7 +86,7 @@ return {
 					},
 					lualine_c = {
 						{
-							'filename',
+							custom_fname,
 							path = 4,
 							symbols = {
 								modified = '󰽂 ',
@@ -129,7 +129,7 @@ return {
 						{
 							'buffers',
 							mode = 0,
-							use_mode_colors = false,
+							use_mode_colors = true,
 							symbols = {
 								modified = ' 󰽂 ',
 								alternate_file = '#',

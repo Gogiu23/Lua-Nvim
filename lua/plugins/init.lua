@@ -52,4 +52,12 @@ return {
 		'stevearc/dressing.nvim',
 		event = "BufReadPre",
 	},
+	{
+		"folke/neoconf.nvim",
+		cmd = "Neoconf"
+	},
+	{
+		"folke/neodev.nvim",
+		opts = {},
+	},
 }

@@ -1,10 +1,10 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		event = {"BufReadPre", "BufNewFile"},
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{
-				'williamboman/mason-lspconfig.nvim',
+				"williamboman/mason-lspconfig.nvim",
 				opts = {
 					ensure_installed = {
 						"efm",
@@ -13,9 +13,9 @@ return {
 					automatic_installation = true,
 				},
 				config = function()
-					require('mason-lspconfig').setup({opts})
-				end
-			}
+					require("mason-lspconfig").setup({})
+				end,
+			},
 		},
 		config = function()
 			require("mason").setup({
@@ -23,10 +23,10 @@ return {
 					icons = {
 						package_installed = "✓",
 						package_pending = "➜",
-						package_uninstalled = "✗"
-					}
-				}
+						package_uninstalled = "✗",
+					},
+				},
 			})
-		end
-	}
+		end,
+	},
 }
