@@ -18,6 +18,7 @@ require("config.autocmds")
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
+		{ import = "plugins.lsp" },
 	},
 	{
 		defaults = {
@@ -83,4 +84,3 @@ require("lazy").setup({
 		},
 	},
 })
-

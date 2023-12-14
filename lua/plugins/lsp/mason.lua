@@ -9,6 +9,7 @@ return {
 					ensure_installed = {
 						"efm",
 						"lua-ls",
+						"html",
 					},
 					automatic_installation = true,
 				},

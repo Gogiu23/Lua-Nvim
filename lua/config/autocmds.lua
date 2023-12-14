@@ -1,7 +1,7 @@
 local function augroup(name)
-	return vim.api.nvim_create_augroup("lazyvim_" .. name, {clear = true })
+	return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
--- resize splits if window got resized
+--auto resize
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	group = augroup("resize_splits"),
 	callback = function()
@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 	end,
 })
 
--- close some filetypes with <q>
+--Cerrar ciertas ventanas con q
 vim.api.nvim_create_autocmd("FileType", {
 	group = augroup("close_with_q"),
 	pattern = {
@@ -36,6 +36,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+--Cursor en la ultima posicion
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = augroup("last_loc"),
 	callback = function(event)
@@ -52,4 +53,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+--Format on save
+local lsp_fmt_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = lsp_fmt_group,
+	callback = function(ev)
+		local efm = vim.lsp.get_active_clients({ name = "efm", bufnr = ev.buf })
 
+		if vim.tbl_isempty(efm) then
+			return
+		end
+
+		vim.lsp.buf.format({ name = "efm" })
+	end,
+})

@@ -1,7 +1,10 @@
 local map = vim.keymap.set
 local N = "n"
 local V = "v"
-local opts = { remap = true, silent = false }
+local opts = { remap = true, silent = true }
+
+--nvimtree space activate
+map(N, "<space>", "<cmd>NvimTreeToggle<CR>", opts)
 
 --AUTOINDENT
 vim.cmd([[nnoremap <leader><leader> :normal gg=G''<CR>]])
@@ -12,8 +15,8 @@ map({ "n", "v" }, "H", "<home>", { noremap = true })
 map("i", "jk", "<esc>", { desc = "exit" })
 
 --MOVE VISUAL STRINGS TROUGHT THE SCREEN
-vim.cmd([[vnoremap <C-Down> :m '>+1<CR>gv=gv]])
-vim.cmd([[vnoremap <C-Up> :m '<-2<CR>gv=gv]])
+vim.cmd([[vnoremap <C-j> :m '>+1<CR>gv=gv]])
+vim.cmd([[vnoremap <C-k> :m '<-2<CR>gv=gv]])
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -33,3 +36,25 @@ map("n", "<leader>sp", "<cmd>set paste!<CR>", { desc = "pastetoggle" })
 --Toggle comments
 map(N, "<C-/>", "gcc", opts)
 map(V, "<C-/>", "gc", opts)
+
+--keymaps for luasnips
+map({ "i", "s" }, "<C-L>", "<cmd>lua require('luasnip').jump(-1)<CR>", opts)
+map({ "i", "s" }, "<C-J>", "<cmd>lua require('luasnip').jump(1)<CR>", opts)
+
+local search = function()
+	local input = vim.fn.input("")
+	local browser = "'https://www.google.com/search?q=" .. input .. "'"
+	local cmd = "!open" .. " " .. browser
+	vim.cmd(cmd)
+end
+
+map(N, "<leader>sg", search, opts, { desc = "searc Google" })
+
+-- search Google()
+-- map(
+-- 	N,
+-- 	"<leader>sg",
+-- 	"<cmd>lua vim.fn.system({'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', 'https://www.google.com/search?q=' .. vim.fn.input('')})<CR>",
+-- 	opts,
+-- 	{ desc = "Search Google" }
+--

@@ -1,11 +1,11 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	event = {"BufReadPre", "BufNewFile"},
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		'windwp/nvim-ts-autotag',
+		"windwp/nvim-ts-autotag",
 	},
-	config = function ()
+	config = function()
 		local configs = require("nvim-treesitter.configs")
 		configs.setup({
 			ensure_installed = {
@@ -33,8 +33,8 @@ return {
 				"yaml",
 			},
 			sync_install = false,
-			highlight = { 
-				enable = true 
+			highlight = {
+				enable = true,
 			},
 			autotag = {
 				enable = true,
@@ -42,18 +42,45 @@ return {
 				enable_close = true,
 				enable_close_on_slash = true,
 				filetypes = {
-					'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript',
-					'xml',
-					'php',
-					'markdown',
-					'astro', 'glimmer', 'handlebars', 'hbs'
+					"html",
+					"javascript",
+					"typescript",
+					"javascriptreact",
+					"typescriptreact",
+					"svelte",
+					"vue",
+					"tsx",
+					"jsx",
+					"rescript",
+					"xml",
+					"php",
+					"markdown",
+					"astro",
+					"glimmer",
+					"handlebars",
+					"hbs",
 				},
 				skip_tags = {
-					'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'slot',
-					'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr','menuitem'
-				}
+					"area",
+					"base",
+					"br",
+					"col",
+					"command",
+					"embed",
+					"hr",
+					"img",
+					"slot",
+					"input",
+					"keygen",
+					"link",
+					"meta",
+					"param",
+					"source",
+					"track",
+					"wbr",
+					"menuitem",
+				},
 			},
-
 		})
 	end,
 }

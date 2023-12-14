@@ -2,12 +2,16 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
-		keys = {
-			{ "<space>", "<cmd>NvimTreeToggle<CR>", desc = "NvimTree"},
-		},
+		event = function()
+			if vim.fn.argc() == 1 then
+				return "ColorScheme"
+			else
+				return { "BufReadPre", "BufNewFile" }
+			end
+		end,
 		dependencies = {},
 		config = function()
-			require("nvim-tree").setup {
+			require("nvim-tree").setup({
 				on_attach = "default",
 				hijack_cursor = false,
 				auto_reload_on_write = true,
@@ -252,16 +256,16 @@ return {
 						watcher = false,
 					},
 				},
-			} -- END_DEFAULT_OPTS
+			}) -- END_DEFAULT_OPTS
 		end,
 	},
 	{
-		'stevearc/aerial.nvim',
+		"stevearc/aerial.nvim",
 		keys = {
-			{"<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial toggle"},
+			{ "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial toggle" },
 		},
-		config  = function ()
-			require('aerial').setup({})
-		end
+		config = function()
+			require("aerial").setup({})
+		end,
 	},
 }

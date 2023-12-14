@@ -1,8 +1,13 @@
 return {
 	{
 		"nvimdev/lspsaga.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("lspsaga").setup({
+				lightbulb = {
+					enable = true,
+					sign = false,
+				},
 				move_in_saga = {
 					prev = "<C-k>",
 					next = "<C-j>",

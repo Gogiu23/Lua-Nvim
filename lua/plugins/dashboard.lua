@@ -1,26 +1,26 @@
 return {
 	{
-		'nvimdev/dashboard-nvim',
+		"nvimdev/dashboard-nvim",
 		event = function()
 			if vim.fn.argc() == 0 then
-				return 'VimEnter'
+				return "VimEnter"
 			end
 		end,
 		cmd = "Dashboard",
-		config = function ()
+		config = function()
 			local dash = require("dashboard")
 			local map = vim.keymap.set
 
-			map("n", "<leader>d", ":Dashboard<CR>", {desc = "Dashboard"})
+			map("n", "<leader>d", ":Dashboard<CR>", { desc = "Dashboard" })
 			vim.opt_global.showtabline = 2
 
 			dash.setup({
-				theme = 'Hyper',
-				shortcut_type = 'number',
+				theme = "Hyper",
+				shortcut_type = "number",
 				config = {
 					week_header = {
 						enable = true,
-						append =  {'   ' .. 'May Be The Day to Avoid The Rabbit Hole' .. ' 󰵼 '},
+						append = { "   " .. "May Be The Day to Avoid The Rabbit Hole" .. " 󰵼 " },
 					},
 					disable_move = true,
 					hide = {
@@ -32,54 +32,54 @@ return {
 							desc = "󰒲  Lazy ",
 							group = "@text.todo",
 							action = "Lazy",
-							key = "l"
-						},
-						{ 
-							desc = '󰊳  Update Plugins ',
-							group = '@property',
-							action = 'Lazy update',
-							key = 'u'
+							key = "l",
 						},
 						{
-							icon = '  ',
-							icon_hl = '@variable',
-							desc = 'Files',
-							group = 'Label',
-							action = 'Telescope find_files',
-							key = 'f',
+							desc = "󰊳  Update Plugins ",
+							group = "@property",
+							action = "Lazy update",
+							key = "u",
 						},
 						{
-							desc = '  Browse Files ',
-							group = 'DiagnosticHint',
-							action = 'Telescope file_browser',
-							key = 'a',
+							icon = "  ",
+							icon_hl = "@variable",
+							desc = "Files",
+							group = "Label",
+							action = "Telescope find_files",
+							key = "f",
 						},
 						{
-							desc = '  Chat GPT ',
-							group = 'Number',
+							desc = "  Browse Files ",
+							group = "DiagnosticHint",
+							action = "Telescope file_browser",
+							key = "a",
+						},
+						{
+							desc = "  Chat GPT ",
+							group = "Number",
 							action = '!open "https://chat.openai.com/"',
-							key = 'c',
+							key = "c",
 						},
 					},
 					project = {
 						enable = true,
 						limit = 8,
-						icon = '💻 ',
-						label = ' Projects working on',
-						action = 'Telescope find_files cwd=',
+						icon = "💻 ",
+						label = " Projects working on",
+						action = "Telescope find_files cwd=",
 					},
 					mru = {
 						limit = 8,
-						icon = '🗂️',
-						label = ' Recent files opened',
-						cwd_only = false 
+						icon = "🗂️",
+						label = " Recent files opened",
+						cwd_only = false,
 					},
-					footer = {"🎱 Copyright Giuliano Dominici"}, -- footer
+					footer = { "🎱 Copyright Giuliano Dominici" }, -- footer
 				},
 			})
 		end,
 		dependencies = {
-			{'nvim-tree/nvim-web-devicons'},
+			{ "nvim-tree/nvim-web-devicons" },
 		},
 	},
 }
