@@ -41,6 +41,12 @@ return {
 			"tamago324/cmp-zsh",
 			"hrsh7th/cmp-nvim-lua",
 			"windwp/nvim-autopairs",
+			{
+				"zbirenbaum/copilot-cmp",
+				config = function()
+					require("copilot_cmp").setup()
+				end,
+			},
 			{ "jackieaskins/cmp-emmet", build = "npm run release" },
 		},
 		config = function()
@@ -50,6 +56,12 @@ return {
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
+			lspkind.init({
+				symbol_map = {
+					Copilot = "",
+				},
+			})
+			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 			cmp.setup({
 				snippet = {
@@ -101,6 +113,7 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
+					{ name = "copilot" },
 					{ name = "luasnip" },
 					{ name = "nvim_lua" },
 					{ name = "emmet" },
@@ -137,6 +150,21 @@ return {
 						maxwidth = 50,
 						ellipsis_char = "...",
 					}),
+				},
+				sorting = {
+					priority_weight = 2,
+					comparators = {
+						require("copilot_cmp.comparators").prioritize,
+						cmp.config.compare.offset,
+						cmp.config.compare.exact,
+						cmp.config.compare.score,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.locality,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
 				},
 			})
 		end,

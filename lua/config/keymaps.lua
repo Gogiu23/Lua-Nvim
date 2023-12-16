@@ -48,7 +48,14 @@ local search = function()
 	vim.cmd(cmd)
 end
 
-map(N, "<leader>sg", search, opts, { desc = "searc Google" })
+local chatgpt = function()
+	local browser = "'https://chat.openai.com/'"
+	local cmd = "!open" .. " " .. browser
+	vim.cmd(cmd)
+end
+
+map(N, "<leader>sg", search, { desc = "search Google" })
+map(N, "<leader>sc", chatgpt, { desc = "search chatgpt" })
 
 -- search Google()
 -- map(
