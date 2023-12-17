@@ -24,8 +24,7 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 				settings = {
-					Lua = 
-					{
+					Lua = {
 						diagnostics = {
 							globals = { "vim" },
 						},
@@ -90,8 +89,6 @@ return {
 					},
 				},
 			})
-
-
 
 			lspconf.efm.setup({
 				filetypes = vim.tbl_keys(langs),

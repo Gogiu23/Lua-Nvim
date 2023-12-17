@@ -7,7 +7,6 @@ local eslint_d = require("efmls-configs.linters.eslint_d")
 
 M.langs = {
 	lua = { stylua, luacheck },
-	html = { prettier_d },
 	javascript = { eslint_d, prettier_d },
 	typescript = { eslint_d, prettier_d },
 }

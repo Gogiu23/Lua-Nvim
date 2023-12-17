@@ -28,7 +28,7 @@ return {
 	--Bracey (liveserver)
 	{
 		"turbio/bracey.vim",
-		ft = "html",
+		ft = { "html", "css" },
 	},
 	{
 		-- highlight the tag corresponding
