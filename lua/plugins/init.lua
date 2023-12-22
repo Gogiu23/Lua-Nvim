@@ -28,7 +28,8 @@ return {
 	--Bracey (liveserver)
 	{
 		"turbio/bracey.vim",
-		ft = { "html", "css" },
+		event = "InsertEnter",
+		build = { "npm install --prefix server" },
 	},
 	{
 		-- highlight the tag corresponding
