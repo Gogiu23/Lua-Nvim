@@ -1,6 +1,6 @@
 require("config")
 -- vim.cmd([[colorscheme tokyonight]])
-vim.cmd([[colorscheme vscode]])
+vim.cmd([[colorscheme tokyonight-night]])
 -- gray
 vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", strikethrough = true, fg = "#808080" })
 -- blue

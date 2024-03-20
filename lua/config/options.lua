@@ -1,4 +1,5 @@
 local opt = vim.opt
+opt.wrap = false
 opt.termguicolors = true
 opt.splitright = true
 opt.splitbelow = true

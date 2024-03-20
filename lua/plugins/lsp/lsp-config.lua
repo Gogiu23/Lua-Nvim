@@ -38,6 +38,27 @@ return {
 				},
 			})
 
+			lspconf.ast_grep.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				filetypes = {
+					"c",
+					"cpp",
+					"rust",
+					"go",
+					"java",
+					"python",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"html",
+					"css",
+					"kotlin",
+					"dart",
+					"lua",
+				},
+			})
+
 			--emmet lsp
 			lspconf.emmet_ls.setup({
 				on_attach = on_attach,

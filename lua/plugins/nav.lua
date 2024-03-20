@@ -268,4 +268,21 @@ return {
 			require("aerial").setup({})
 		end,
 	},
+	--Oil nvim
+	{
+		"stevearc/oil.nvim",
+		keys = {
+			{ "<leader>o", "<cmd>Oil<CR>", desc = "Oil" },
+		},
+		opts = {},
+		config = function()
+			require("oil").setup({
+				keymaps = {
+					["<C-s>"] = false,
+					["<C-v>"] = "actions.select_vsplit",
+					["<C-x>"] = "actions.select_split",
+				},
+			})
+		end,
+	},
 }

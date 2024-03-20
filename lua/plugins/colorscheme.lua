@@ -1,7 +1,7 @@
 return {
 	{
 		"Mofiqul/vscode.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			vim.o.background = "dark"
@@ -30,7 +30,7 @@ return {
 	},
 	{
 		"folke/tokyonight.nvim",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 		config = function()
 			require("tokyonight").setup({

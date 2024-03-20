@@ -1,35 +1,5 @@
 return {
 	{
-		"L3MON4D3/LuaSnip",
-		event = "InsertEnter",
-		version = "v2.*",
-		build = "make install_jsregexp",
-		dependencies = {
-			"rafamadriz/friendly-snippets",
-			"molleweide/LuaSnip-snippets.nvim",
-			"honza/vim-snippets",
-		},
-		config = function(_, opts)
-			if opts then
-				require("luasnip").config.setup(opts)
-			end
-			-- friendly-snippets - enable standardized comments snippets
-			require("luasnip").filetype_extend("typescript", { "tsdoc" })
-			require("luasnip").filetype_extend("javascript", { "jsdoc" })
-			require("luasnip").filetype_extend("lua", { "luadoc" })
-			require("luasnip").filetype_extend("python", { "pydoc" })
-			require("luasnip").filetype_extend("rust", { "rustdoc" })
-			require("luasnip").filetype_extend("cs", { "csharpdoc" })
-			require("luasnip").filetype_extend("java", { "javadoc" })
-			require("luasnip").filetype_extend("c", { "cdoc" })
-			require("luasnip").filetype_extend("cpp", { "cppdoc" })
-			require("luasnip").filetype_extend("php", { "phpdoc" })
-			require("luasnip").filetype_extend("kotlin", { "kdoc" })
-			require("luasnip").filetype_extend("ruby", { "rdoc" })
-			require("luasnip").filetype_extend("sh", { "shelldoc" })
-		end,
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
@@ -38,36 +8,22 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
-			"tamago324/cmp-zsh",
-			"hrsh7th/cmp-nvim-lua",
 			"windwp/nvim-autopairs",
-			{
-				"zbirenbaum/copilot-cmp",
-				config = function()
-					require("copilot_cmp").setup()
-				end,
-			},
-			{ "jackieaskins/cmp-emmet", build = "npm run release" },
+			-- "tamago324/cmp-zsh",
+			-- "hrsh7th/cmp-nvim-lua",
 		},
-		config = function()
+		opts = function()
 			local has_words_before = require("util.cmp").has_words_before
-			vim.opt.completeopt = "menu,menuone,noselect"
-			require("luasnip.loaders.from_vscode").load()
+			vim.opt.completeopt = "menu,menuone,noinsert"
+			-- require("luasnip.loaders.from_vscode").load()
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
-			lspkind.init({
-				symbol_map = {
-					Copilot = "",
-				},
-			})
-			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+			local defaults = require("cmp.config.default")()
 
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
+			return {
+				completion = {
+					completeopt = "menu,menuone,noselect",
 				},
 				view = {
 					entries = {
@@ -89,23 +45,42 @@ return {
 					["<C-d>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping({
+						i = function(fallback)
+							if cmp.visible() and cmp.get_active_entry() then
+								cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+							else
+								fallback()
+							end
+						end,
+						s = cmp.mapping.confirm({ select = false }),
+						-- c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+						c = function(fallback)
+							if cmp.visible() and cmp.get_active_entry() then
+								cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+							else
+								fallback()
+							end
+						end,
+					}),
 					["<Tab>"] = cmp.mapping(function(fallback)
+						-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
 						if cmp.visible() then
-							cmp.select_next_item()
+							local entry = cmp.get_selected_entry()
+							if not entry then
+								cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+							end
+							cmp.confirm()
 						elseif luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
 						elseif has_words_before() then
-							cmp.complete()
+							cmp.confirm()
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
-
 					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
+						if not cmp.visible() and luasnip.jumpable(-1) then
 							luasnip.jump(-1)
 						else
 							fallback()
@@ -113,14 +88,14 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
-					{ name = "copilot" },
-					{ name = "luasnip" },
-					{ name = "nvim_lua" },
-					{ name = "emmet" },
 					{ name = "nvim_lsp" },
-					{ name = "buffer" },
 					{ name = "path" },
-					{ name = "zsh" },
+					-- { name = "luasnip" },
+					-- { name = "nvim_lua" },
+					-- { name = "emmet" },
+				}, {
+					{ name = "buffer" },
+					-- { name = "zsh" },
 				}),
 				-- `/` cmdline setup.
 				cmp.setup.cmdline("/", {
@@ -151,22 +126,46 @@ return {
 						ellipsis_char = "...",
 					}),
 				},
-				sorting = {
-					priority_weight = 2,
-					comparators = {
-						require("copilot_cmp.comparators").prioritize,
-						cmp.config.compare.offset,
-						cmp.config.compare.exact,
-						cmp.config.compare.score,
-						cmp.config.compare.recently_used,
-						cmp.config.compare.locality,
-						cmp.config.compare.kind,
-						cmp.config.compare.sort_text,
-						cmp.config.compare.length,
-						cmp.config.compare.order,
-					},
-				},
-			})
+				sorting = defaults.sorting,
+			}
 		end,
+		---@param opts cmp.ConfigSchema
+		config = function(_, opts)
+			for _, source in ipairs(opts.sources) do
+				source.group_index = source.group_index or 1
+			end
+			require("cmp").setup(opts)
+		end,
+	},
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
+		dependencies = {
+			{
+				"rafamadriz/friendly-snippets",
+				config = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+				end,
+			},
+			{
+				"hrsh7th/nvim-cmp",
+				dependencies = {
+					"saadparwaiz1/cmp_luasnip",
+				},
+				opts = function(_, opts)
+					opts.snippet = {
+						expand = function(args)
+							require("luasnip").lsp_expand(args.body)
+						end,
+					}
+					table.insert(opts.sources, { name = "luasnip" })
+				end,
+			},
+		},
+		opts = {
+			history = true,
+			delete_check_events = "TextChanged",
+		},
 	},
 }

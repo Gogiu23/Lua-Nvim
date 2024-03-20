@@ -24,13 +24,6 @@ return {
 			})
 		end,
 	},
-
-	--Bracey (liveserver)
-	{
-		"turbio/bracey.vim",
-		event = "InsertEnter",
-		build = { "npm install --prefix server" },
-	},
 	{
 		-- highlight the tag corresponding
 		"gregsexton/MatchTag",

@@ -22,7 +22,7 @@ return {
 						enable = true,
 						append = { "   " .. "May Be The Day to Avoid The Rabbit Hole" .. " 󰵼 " },
 					},
-					disable_move = true,
+					disable_move = false,
 					hide = {
 						statusline = true,
 						tabline = false,
@@ -62,17 +62,13 @@ return {
 						},
 					},
 					project = {
-						enable = true,
-						limit = 8,
-						icon = "💻 ",
-						label = " Projects working on",
-						action = "Telescope find_files cwd=",
+						enable = false,
 					},
 					mru = {
-						limit = 8,
+						limit = 10,
 						icon = "🗂️",
 						label = " Recent files opened",
-						cwd_only = false,
+						cwd_only = true,
 					},
 					footer = { "🎱 Copyright Giuliano Dominici" }, -- footer
 				},
