@@ -38,52 +38,35 @@ return {
 				},
 			})
 
-			lspconf.ast_grep.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				filetypes = {
-					"c",
-					"cpp",
-					"rust",
-					"go",
-					"java",
-					"python",
-					"javascript",
-					"javascriptreact",
-					"typescript",
-					"html",
-					"css",
-					"kotlin",
-					"dart",
-					"lua",
-				},
-			})
-
 			--emmet lsp
-			lspconf.emmet_ls.setup({
+			-- lspconf.emmet_ls.setup({
+			-- 	on_attach = on_attach,
+			-- 	capabilities = capabilities,
+			-- 	filetypes = {
+			-- 		"css",
+			-- 		"eruby",
+			-- 		"html",
+			-- 		"javascript",
+			-- 		"javascriptreact",
+			-- 		"less",
+			-- 		"sass",
+			-- 		"scss",
+			-- 		"svelte",
+			-- 		"pug",
+			-- 		"typescriptreact",
+			-- 		"vue",
+			-- 	},
+			-- 	init_options = {
+			-- 		html = {
+			-- 			options = {
+			-- 				["bem.enabled"] = true,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
+			lspconf.emmet_language_server.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
-				filetypes = {
-					"css",
-					"eruby",
-					"html",
-					"javascript",
-					"javascriptreact",
-					"less",
-					"sass",
-					"scss",
-					"svelte",
-					"pug",
-					"typescriptreact",
-					"vue",
-				},
-				init_options = {
-					html = {
-						options = {
-							["bem.enabled"] = true,
-						},
-					},
-				},
 			})
 
 			--Typescript and javascript lsp

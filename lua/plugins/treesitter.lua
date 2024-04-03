@@ -13,6 +13,7 @@ return {
 				"c",
 				"diff",
 				"html",
+				"css",
 				"javascript",
 				"jsdoc",
 				"json",
@@ -43,6 +44,7 @@ return {
 				enable_close_on_slash = true,
 				filetypes = {
 					"html",
+					"javascript",
 				},
 				skip_tags = {},
 			},

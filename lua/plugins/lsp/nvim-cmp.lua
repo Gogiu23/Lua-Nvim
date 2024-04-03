@@ -9,12 +9,11 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
 			"windwp/nvim-autopairs",
-			-- "tamago324/cmp-zsh",
-			-- "hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-nvim-lua",
+			{ "jackieaskins/cmp-emmet", build = "npm run release" },
 		},
 		opts = function()
 			local has_words_before = require("util.cmp").has_words_before
-			vim.opt.completeopt = "menu,menuone,noinsert"
 			-- require("luasnip.loaders.from_vscode").load()
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
@@ -41,6 +40,8 @@ return {
 					scrollbar = true,
 				},
 				mapping = cmp.mapping.preset.insert({
+					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
 					["<C-d>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
@@ -63,6 +64,25 @@ return {
 							end
 						end,
 					}),
+					--Using tab to complete only with one voice
+					-- ["<Tab>"] = cmp.mapping(function(fallback)
+					-- 	if cmp.visible() then
+					-- 		if #cmp.get_entries() == 1 then
+					-- 			cmp.confirm({ select = true })
+					-- 		else
+					-- 			cmp.select_next_item()
+					-- 		end
+					-- 	elseif luasnip.expand_or_jumpable() then
+					-- 		luasnip.expand_or_jump()
+					-- 	elseif has_words_before() then
+					-- 		cmp.complete()
+					-- 		if #cmp.get_entries() == 1 then
+					-- 			cmp.confirm({ select = true })
+					-- 		end
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
 						if cmp.visible() then
@@ -89,13 +109,25 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "path" },
-					-- { name = "luasnip" },
-					-- { name = "nvim_lua" },
-					-- { name = "emmet" },
-				}, {
 					{ name = "buffer" },
-					-- { name = "zsh" },
+					{ name = "path" },
+					-- { name = "emmet" },
+					{
+						name = "html-css",
+						option = {
+							max_count = {},
+							enable_on = {
+								"html",
+								"css",
+								"javascript",
+							},
+							file_extensions = { "css", "sass", "less" },
+							style_sheets = {
+								"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+							},
+						},
+					},
+					-- { name = "nvim_lua" },
 				}),
 				-- `/` cmdline setup.
 				cmp.setup.cmdline("/", {
@@ -167,5 +199,15 @@ return {
 			history = true,
 			delete_check_events = "TextChanged",
 		},
+	},
+	{
+		"Jezda1337/nvim-html-css",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("html-css"):setup()
+		end,
 	},
 }
