@@ -2,13 +2,14 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
-		event = function()
-			if vim.fn.argc() == 1 then
-				return "ColorScheme"
-			else
-				return { "BufReadPre", "BufNewFile" }
-			end
-		end,
+		event = { "BufReadPre", "BufNewFile" },
+		-- event = function()
+		-- 	if vim.fn.argc() == 1 then
+		-- 		return "ColorScheme"
+		-- 	else
+		-- 		return { "BufReadPre", "BufNewFile" }
+		-- 	end
+		-- end,
 		dependencies = {},
 		config = function()
 			require("nvim-tree").setup({
@@ -30,25 +31,25 @@ return {
 					files_first = false,
 				},
 				view = {
-					centralize_selection = false,
+					centralize_selection = true,
 					cursorline = true,
 					debounce_delay = 15,
 					side = "left",
-					preserve_window_proportions = false,
+					preserve_window_proportions = true,
 					number = true,
 					relativenumber = true,
 					signcolumn = "yes",
-					width = 30,
+					width = 40,
 					float = {
 						enable = true,
 						quit_on_focus_loss = true,
 						open_win_config = {
 							relative = "editor",
 							border = "rounded",
-							width = 30,
+							width = 40,
 							height = 30,
 							row = 1,
-							col = 1,
+							col = 2,
 						},
 					},
 				},
@@ -233,7 +234,7 @@ return {
 				},
 				notify = {
 					threshold = vim.log.levels.INFO,
-					absolute_path = true,
+					absolute_path = false,
 				},
 				ui = {
 					confirm = {
@@ -271,9 +272,13 @@ return {
 	--Oil nvim
 	{
 		"stevearc/oil.nvim",
-		keys = {
-			{ "<leader>o", "<cmd>Oil<CR>", desc = "Oil" },
-		},
+		event = function()
+			if vim.fn.argc() == 1 then
+				return "ColorScheme"
+			else
+				return { "BufReadPre", "BufNewFile" }
+			end
+		end,
 		opts = {},
 		config = function()
 			require("oil").setup({
@@ -283,6 +288,7 @@ return {
 					["<C-x>"] = "actions.select_split",
 				},
 			})
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Oil"})
 		end,
 	},
 }

@@ -69,4 +69,13 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {},
 	},
+	{
+		"mbbill/undotree",
+		keys = {
+			{ "<leader>u", ":UndotreeToggle<CR>", desc = "Undotree" },
+		},
+		config = function ()
+			vim.cmd[[let g:undotree_SetFocusWhenToggle = 1]]
+		end
+	},
 }

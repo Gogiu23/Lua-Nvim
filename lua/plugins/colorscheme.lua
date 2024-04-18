@@ -9,11 +9,11 @@ return {
 			local c = require("vscode.colors").get_colors()
 			require("vscode").setup({
 				-- style = "light",
-				transparent = false,
+				transparent = true,
 				-- Enable italic comment
 				italic_comments = true,
 				-- Disable nvim-tree background color
-				disable_nvimtree_bg = false,
+				disable_nvimtree_bg = true,
 				-- Override colors (see ./lua/vscode/colors.lua)
 				color_overrides = {
 					vscLineNumber = "#FFFFFF",
@@ -38,6 +38,28 @@ return {
 				hide_inactive_statusline = true,
 				lualine_bold = true,
 			})
+			vim.cmd([[colorscheme tokyonight-moon]])
+		end,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = true,
+		priority = 1000,
+		config = function()
+			require("catppuccin").setup({
+				flavour = "macchiato",
+				transparent_background = true,
+				default_integrations = true,
+				integrations = {
+					treesitter = true,
+					notify = true,
+					mason = true,
+					noice = true,
+					which_key = true,
+				},
+			})
+			-- vim.cmd([[colorscheme catppuccin-macchiato]])
 		end,
 	},
 }

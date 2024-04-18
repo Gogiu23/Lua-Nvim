@@ -1,13 +1,13 @@
 return {
 	--lualine
 	{
-		'nvim-lualine/lualine.nvim',
-		event = {"BufreadPre", "BufNewFile"},
+		"nvim-lualine/lualine.nvim",
+		event = { "BufreadPre", "BufNewFile" },
 		config = function()
 			local option = vim.opt
 			local map = vim.keymap.set
 			local N = "n"
-			local opt = {noremap = false, silent = true}
+			local opt = { noremap = false, silent = true }
 
 			option.showtabline = 2
 			map(N, "<C-.>", "<cmd>bnext<CR>", opt)
@@ -15,48 +15,56 @@ return {
 			map(N, "<C-c>", "<cmd>bdelete<CR>", opt)
 			local map = vim.keymap.set
 
-			local custom_fname = require('lualine.components.filename'):extend()
-			local highlight = require'lualine.highlight'
-			local default_status_colors = { saved = '#239B56', modified = '#922B21' }
+			local custom_fname = require("lualine.components.filename"):extend()
+			local highlight = require("lualine.highlight")
+			local default_status_colors = { saved = "#239B56", modified = "#922B21" }
 
 			function custom_fname:init(options)
 				custom_fname.super.init(self, options)
 				self.status_colors = {
 					saved = highlight.create_component_highlight_group(
-					{fg = default_status_colors.saved}, 'filename_status_saved', self.options),
+						{ fg = default_status_colors.saved },
+						"filename_status_saved",
+						self.options
+					),
 					modified = highlight.create_component_highlight_group(
-					{fg = default_status_colors.modified}, 'filename_status_modified', self.options),
+						{ fg = default_status_colors.modified },
+						"filename_status_modified",
+						self.options
+					),
 				}
-				if self.options.color == nil then self.options.color = '' end
+				if self.options.color == nil then
+					self.options.color = ""
+				end
 			end
 
 			function custom_fname:update_status()
 				local data = custom_fname.super.update_status(self)
-				data = highlight.component_format_highlight(vim.bo.modified
-				and self.status_colors.modified
-				or self.status_colors.saved) .. data
+				data = highlight.component_format_highlight(
+					vim.bo.modified and self.status_colors.modified or self.status_colors.saved
+				) .. data
 				return data
 			end
 			local function keymap()
 				if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
-					return '⌨ ' .. vim.b.keymap_name
+					return "⌨ " .. vim.b.keymap_name
 				end
-				return ''
+				return ""
 			end
 
-			require('lualine').setup({
+			require("lualine").setup({
 				options = {
 					globalstatus = true,
 					icons_enabled = true,
-					theme = 'OceanicNext',
-					section_separators = { left = '', right = '' },
+					theme = "tokyonight",
+					section_separators = { left = "", right = "" },
 					-- component_separators = { left = '', right = '' },
 					-- component_separators = { left = '', right = ''},
-					component_separators = { left = '|', right = '󱋱'},
+					component_separators = { left = "|", right = "󱋱" },
 					-- section_separators = { left = '', right = ''},
 					disabled_filetypes = {
-						statusline = {"dashboard"},
-						tabline = {"dasboard"},
+						statusline = { "dashboard" },
+						tabline = { "dasboard" },
 					},
 					refresh = {
 						statusline = 1000,
@@ -66,74 +74,74 @@ return {
 				sections = {
 					lualine_a = {
 						{
-							'mode',
+							"mode",
 							icons_enabled = true,
-							icon = "  "
+							icon = "  ",
 						},
 					},
 					lualine_b = {
 						{
-							'branch',
+							"branch",
 							icon = {
-								' ',
+								" ",
 								color = {
-									fg = 'white',
+									fg = "white",
 								},
 							},
 						},
-						'diff',
-						'diagnostics'
+						"diff",
+						"diagnostics",
 					},
 					lualine_c = {
 						{
 							custom_fname,
 							path = 4,
 							symbols = {
-								modified = '󰽂 ',
-								readonly = '󱙃 ',
+								modified = "󰽂 ",
+								readonly = "󱙃 ",
 							},
 						},
 					},
 					lualine_x = {
 						{
-							'fileformat',
+							"fileformat",
 							symbols = {
-								unix = '',
+								unix = "",
 							},
 						},
 						{
-							'filetype',
+							"filetype",
 							icon_only = true,
 						},
 					},
 					lualine_y = {
 						{
-							'progress',
+							"progress",
 							icon = "",
 						},
 					},
 					lualine_z = {
 						{
-							'location',
-							icon = {"", color = {bold = true}},
+							"location",
+							icon = { "", color = { bold = true } },
 						},
 					},
 				},
 				tabline = {
 					lualine_a = {
 						{
-							'filetype',
+							"filetype",
 							icon_only = true,
-							icon = {align = 'right'},
+							icon = { align = "right" },
 						},
 						{
-											'buffers',
+							"buffers",
 							mode = 0,
 							use_mode_colors = true,
 							symbols = {
-								modified = ' 󰽂 ',
-								alternate_file = '#',
-								directory =  ' ',
+								modified = " 󰽂 ",
+								alternate_file = "#",
+								directory = " ",
 							},
 						},
 					},
@@ -142,7 +150,7 @@ return {
 					lualine_x = {},
 					lualine_y = {},
 					lualine_z = {
-						'searchcount',
+						"searchcount",
 						"os.date('󱑇 %H:%M')",
 						"os.date(' %a%m%b')",
 					},

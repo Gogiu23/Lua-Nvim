@@ -1,7 +1,7 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -111,19 +111,19 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "path" },
-					-- { name = "emmet" },
+					{ name = "emmet" },
 					{
 						name = "html-css",
 						option = {
-							max_count = {},
 							enable_on = {
 								"html",
 								"css",
 								"javascript",
+								"javascriptreact",
 							},
 							file_extensions = { "css", "sass", "less" },
 							style_sheets = {
-								"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+								"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css",
 							},
 						},
 					},
@@ -172,6 +172,7 @@ return {
 	{
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
+		event = { "BufReadPre", "BufNewFile" },
 		build = "make install_jsregexp",
 		dependencies = {
 			{
@@ -202,6 +203,7 @@ return {
 	},
 	{
 		"Jezda1337/nvim-html-css",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-lua/plenary.nvim",
