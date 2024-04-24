@@ -9,7 +9,7 @@ M.on_attach = function(client, bufnr)
 	map(N, "<leader>l", "<cmd>Lspsaga<CR>", opts, { desc = "Lspasaga" })
 	map(N, "<leader>lf", "<cmd>Lspsaga finder<CR>", opts, { desc = "Lspsaga finder" }) -- go to definition
 	map(N, "<leader>ld", "<cmd>Lspsaga peek_definition<CR>", opts, { desc = "Lspsaga peek definition" }) -- peak definition
-	map(N, "gd", "<cmd>Lspsaga goto_definition<CR>", opts) -- go to definition
+	-- map(N, "gd", "<cmd>Lspsaga goto_definition<CR>", opts) -- go to definition
 	map(N, "<leader>lc", "<cmd>Lspsaga code_action<CR>", opts, { desc = "code actions" })
 	map(N, "<leader>lr", "<cmd>Lspsaga rename<CR>", opts, { desc = "rename" }) -- smart rename
 	map(N, "gD", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line

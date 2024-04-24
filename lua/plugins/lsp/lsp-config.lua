@@ -64,6 +64,12 @@ return {
 			-- 		},
 			-- 	},
 			-- })
+
+			lspconf.jsonls.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+
 			lspconf.emmet_language_server.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,

@@ -288,7 +288,7 @@ return {
 					["<C-x>"] = "actions.select_split",
 				},
 			})
-			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Oil"})
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Oil" })
 		end,
 	},
 }
