@@ -10,6 +10,7 @@ return {
 		event = "BufReadPre",
 		opts = {},
 		config = function()
+			local ft = require('Comment.ft')
 			require("Comment").setup({
 				padding = true,
 				sticky = true,
@@ -21,6 +22,7 @@ return {
 				pre_hook = nil,
 				post_hook = nil,
 			})
+			ft.kdl = {'//%s', '/*%s*/'}
 		end,
 	},
 	{

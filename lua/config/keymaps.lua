@@ -3,6 +3,9 @@ local N = "n"
 local V = "v"
 local opts = { remap = true, silent = true }
 
+--activate template html
+map(N, "<leader>r", "<CMD>read ~/templateHtml/index.html<CR>", { desc = "template html" })
+
 --nvimtree space activate
 map(N, "<space>", "<cmd>NvimTreeToggle<CR>", opts)
 
