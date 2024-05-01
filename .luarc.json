@@ -2,5 +2,9 @@
 	"diagnostic.globals": ["vim"],
 	"diagnostic.disable": [
 		"different-requires"
-	]
+	],
+    "diagnostics.globals": [
+        "vim",
+        "session_filename_to_dir"
+    ]
 }
