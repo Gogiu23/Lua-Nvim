@@ -1,4 +1,15 @@
 return {
+	{
+		"romgrk/barbar.nvim",
+		dependencies = {
+			"lewis6991/gitsigns.nvim",
+		},
+		init = function()
+			vim.g.barbar_auto_setup = true
+		end,
+		opts = {},
+		version = "^1.0.0",
+	},
 	--lualine
 	{
 		"nvim-lualine/lualine.nvim",
@@ -64,11 +75,11 @@ return {
 					-- section_separators = { left = '', right = ''},
 					disabled_filetypes = {
 						statusline = { "dashboard" },
-						tabline = { "dasboard" },
+						-- tabline = { "dasboard" },
 					},
 					refresh = {
 						statusline = 1000,
-						tabline = 1000,
+						-- tabline = 1000,
 					},
 				},
 				sections = {
@@ -127,34 +138,34 @@ return {
 						},
 					},
 				},
-				tabline = {
-					lualine_a = {
-						{
-							"filetype",
-							icon_only = true,
-							icon = { align = "right" },
-						},
-						{
-							"buffers",
-							mode = 0,
-							use_mode_colors = true,
-							symbols = {
-								modified = " 󰽂 ",
-								alternate_file = "#",
-								directory = " ",
-							},
-						},
-					},
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = {},
-					lualine_z = {
-						"searchcount",
-						"os.date('󱑇 %H:%M')",
-						"os.date(' %a%m%b')",
-					},
-				},
+				-- tabline = {
+				-- 	lualine_a = {
+				-- 		{
+				-- 			"filetype",
+				-- 			icon_only = true,
+				-- 			icon = { align = "right" },
+				-- 		},
+				-- 		{
+				-- 			"buffers",
+				-- 			mode = 0,
+				-- 			use_mode_colors = true,
+				-- 			symbols = {
+				-- 				modified = " 󰽂 ",
+				-- 				alternate_file = "#",
+				-- 				directory = " ",
+				-- 			},
+				-- 		},
+				-- 	},
+				-- 	lualine_b = {},
+				-- 	lualine_c = {},
+				-- 	lualine_x = {},
+				-- 	lualine_y = {},
+				-- 	lualine_z = {
+				-- 		"searchcount",
+				-- 		"os.date('󱑇 %H:%M')",
+				-- 		"os.date(' %a%m%b')",
+				-- 	},
+				-- },
 			})
 		end,
 	},

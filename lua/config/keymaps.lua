@@ -41,6 +41,7 @@ map("n", "<leader>sp", "<cmd>set paste!<CR>", { desc = "pastetoggle" })
 map({ "i", "s" }, "<C-L>", "<cmd>lua require('luasnip').jump(-1)<CR>", opts)
 map({ "i", "s" }, "<C-J>", "<cmd>lua require('luasnip').jump(1)<CR>", opts)
 
+--code snippet for Google
 local search = function()
 	local input = vim.fn.input("")
 	local browser = "'https://www.google.com/search?q=" .. input .. "'"
@@ -48,6 +49,7 @@ local search = function()
 	vim.cmd(cmd)
 end
 
+--code snippet for chat gpt
 local chatgpt = function()
 	local browser = "'https://chat.openai.com/'"
 	local cmd = "!open" .. " " .. browser

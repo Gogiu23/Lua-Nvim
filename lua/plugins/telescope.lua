@@ -1,11 +1,11 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
-	keys = {
-		{ "<leader>f", desc = "Telescope" },
-	},
-	cmd = "Telescope",
-	module = "Telescope",
+	-- keys = {
+	-- 	{ "<leader>f", desc = "Telescope" },
+	-- },
+	-- cmd = "Telescope",
+	-- module = "Telescope",
 	dependencies = {
 		"nvim-lua/popup.nvim",
 		"nvim-lua/plenary.nvim",

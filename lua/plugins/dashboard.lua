@@ -10,27 +10,63 @@ return {
 		config = function()
 			local dash = require("dashboard")
 			local map = vim.keymap.set
+			local logo = [[
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- ~ ██████╗  ██████╗  ██████╗ ██╗██╗   ██╗~
+-- ~██╔════╝ ██╔═══██╗██╔════╝ ██║██║   ██║~
+-- ~██║  ███╗██║   ██║██║  ███╗██║██║   ██║~
+-- ~██║   ██║██║   ██║██║   ██║██║██║   ██║~
+-- ~╚██████╔╝╚██████╔╝╚██████╔╝██║╚██████╔╝~
+-- ~ ╚═════╝  ╚═════╝  ╚═════╝ ╚═╝ ╚═════╝ ~
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			]]
+			logo = string.rep("\n", 8) .. logo .. "\n\n"
 
 			map("n", "<leader>d", ":Dashboard<CR>", { desc = "Dashboard" })
 			vim.opt_global.showtabline = 2
 
 			dash.setup({
-				theme = "Hyper",
-				shortcut_type = "number",
+				theme = "doom",
+				shortcut_type = "letter",
 				config = {
-					week_header = {
-						enable = true,
-						append = { "   " .. "May Be The Day to Avoid The Rabbit Hole" .. " 󰵼 " },
-					},
-					disable_move = false,
-					hide = {
-						statusline = true,
-						tabline = false,
-					},
-					shortcut = {
+					header = vim.split(logo, "\n"),
+					-- 	week_header = {
+					-- 		enable = true,
+					-- 		append = { "   " .. "May Be The Day to Avoid The Rabbit Hole" .. " 󰵼 " },
+					-- 	},
+					-- disable_move = false,
+					-- hide = {
+					-- 	statusline = true,
+					-- 	tabline = false,
+					-- },
+					center = {
+						{
+							desc = "󰎔 New file",
+							action = "enew",
+							key = "n",
+						},
+						{
+							icon = " ",
+							icon_hl = "@variable",
+							desc = "Find Files",
+							group = "Label",
+							action = "Telescope find_files",
+							key = "f",
+						},
+						{
+							icon = "⏲ ",
+							desc = "Recent Files",
+							action = "Telescope oldfiles",
+							key = "r",
+						},
+						{
+							desc = "  Browse Files ",
+							group = "DiagnosticHint",
+							action = "Telescope file_browser",
+							key = "a",
+						},
 						{
 							desc = "󰒲  Lazy ",
-							group = "@text.todo",
 							action = "Lazy",
 							key = "l",
 						},
@@ -41,49 +77,44 @@ return {
 							key = "u",
 						},
 						{
-							icon = "  ",
-							icon_hl = "@variable",
-							desc = "Files",
-							group = "Label",
-							action = "Telescope find_files",
-							key = "f",
-						},
-						{
-							desc = "  Browse Files ",
-							group = "DiagnosticHint",
-							action = "Telescope file_browser",
-							key = "a",
-						},
-						{
 							desc = "  Chat GPT ",
 							group = "Number",
 							action = '!open "https://chat.openai.com/"',
+							key = "g",
+						},
+						{
+							desc = " Config",
+							action = "Telescope file_browser path=$HOME/.config/nvim",
 							key = "c",
 						},
+						{
+							desc = "󰗼 Quit",
+							group = "Number",
+							action = "q",
+							key = "q",
+						},
 					},
-					project = {
-						enable = false,
-					},
-					mru = {
-						limit = 10,
-						icon = "🗂️",
-						label = " Recent files opened",
-						cwd_only = true,
-					},
-					footer = { "🎱 Copyright Giuliano Dominici" }, -- footer
+					footer = function()
+						local stats = require("lazy").stats()
+						local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+						return {
+							"🎱 Loaded " .. stats.loaded .. "/" .. stats.count .. " Plugins in " .. ms .. "ms",
+						}
+					end,
 				},
 			})
 		end,
 		dependencies = {
-				{
-						"nvim-tree/nvim-web-devicons",
-						config = function()
-								require("nvim-web-devicons").setup({
-										color_icons = true,
-										default = false,
-									})
-								end,
-							},
-						},
-					},
-				}
+			{
+				"echasnovski/mini.icons",
+				"nvim-tree/nvim-web-devicons",
+				config = function()
+					require("nvim-web-devicons").setup({
+						color_icons = true,
+						default = false,
+					})
+				end,
+			},
+		},
+	},
+}
