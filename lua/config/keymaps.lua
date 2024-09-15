@@ -1,10 +1,11 @@
 local map = vim.keymap.set
 local N = "n"
 local V = "v"
+local E = "jk"
 local opts = { remap = true, silent = true }
 
 --activate template html
-map(N, "<leader>r", "<CMD>read ~/templateHtml/index.html<CR>", { desc = "template html" })
+map(N, "<leader>r", "<CMD>read ~/templateHtml/index.html<CR>", { desc = "template html", expr = true })
 
 --nvimtree space activate
 map(N, "<space>", "<cmd>NvimTreeToggle<CR>", opts)
@@ -13,9 +14,9 @@ map(N, "<space>", "<cmd>NvimTreeToggle<CR>", opts)
 vim.cmd([[nnoremap <leader><leader> :normal gg=G''<CR>]])
 
 --MAPS FOR EVOLUTE THE (JKHL) KEYNOTES
-map({ "n", "v" }, "L", "<end>", { noremap = true })
-map({ "n", "v" }, "H", "<home>", { noremap = true })
-map("i", "jk", "<esc>", { desc = "exit" })
+map({ N, V }, "L", "<end>", { noremap = true })
+map({ N, V }, "H", "<home>", { noremap = true })
+map("i", E, "<esc>", { desc = "exit" })
 
 --MOVE VISUAL STRINGS TROUGHT THE SCREEN
 vim.cmd([[vnoremap <C-j> :m '>+1<CR>gv=gv]])
@@ -36,10 +37,6 @@ map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 --Toggle paste mode
 map("n", "<leader>sp", "<cmd>set paste!<CR>", { desc = "pastetoggle" })
 
---Toggle comments
-map(N, "<C-/>", "gcc", opts)
-map(V, "<C-/>", "gc", opts)
-
 --keymaps for luasnips
 map({ "i", "s" }, "<C-L>", "<cmd>lua require('luasnip').jump(-1)<CR>", opts)
 map({ "i", "s" }, "<C-J>", "<cmd>lua require('luasnip').jump(1)<CR>", opts)
@@ -59,12 +56,3 @@ end
 
 map(N, "<leader>sg", search, { desc = "search Google" })
 map(N, "<leader>sc", chatgpt, { desc = "search chatgpt" })
-
--- search Google()
--- map(
--- 	N,
--- 	"<leader>sg",
--- 	"<cmd>lua vim.fn.system({'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', 'https://www.google.com/search?q=' .. vim.fn.input('')})<CR>",
--- 	opts,
--- 	{ desc = "Search Google" }
---

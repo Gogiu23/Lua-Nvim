@@ -75,15 +75,15 @@ return {
 			})
 		end,
 		dependencies = {
-			{
-				"nvim-tree/nvim-web-devicons",
-				config = function()
-					require("nvim-web-devicons").setup({
-						color_icons = true,
-						default = false,
-					})
-				end,
-			},
-		},
-	},
-}
+				{
+						"nvim-tree/nvim-web-devicons",
+						config = function()
+								require("nvim-web-devicons").setup({
+										color_icons = true,
+										default = false,
+									})
+								end,
+							},
+						},
+					},
+				}

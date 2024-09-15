@@ -1,30 +1,4 @@
 return {
-	--Kotlin nvim
-	{
-		"udalov/kotlin-vim",
-		ft = "kt",
-	},
-	--Comment.nvim
-	{
-		"numToStr/Comment.nvim",
-		event = "BufReadPre",
-		opts = {},
-		config = function()
-			local ft = require('Comment.ft')
-			require("Comment").setup({
-				padding = true,
-				sticky = true,
-				ignore = nil,
-				toggler = { line = "gcc", block = "gbc" },
-				opleader = { line = "gc", block = "gb" },
-				extra = { above = "gcO", below = "gco", eol = "gcA" },
-				mappings = { basic = true, extra = true },
-				pre_hook = nil,
-				post_hook = nil,
-			})
-			ft.kdl = {'//%s', '/*%s*/'}
-		end,
-	},
 	{
 		-- highlight the tag corresponding
 		"gregsexton/MatchTag",
@@ -35,12 +9,12 @@ return {
 		"voldikss/vim-floaterm",
 		lazy = true,
 		keys = {
-			{ "<leader>t", ":FloatermToggle<CR>", desc = "floaterm" },
+			{ "<C-/>", ":FloatermToggle<CR>", desc = "floaterm" },
 		},
 		config = function()
 			vim.cmd([[
 			tnoremap <C-n> <C-\><C-n>:FloatermNew<CR>
-			tnoremap <leader>t <C-\><C-n>:FloatermToggle<CR>
+			tnoremap <C-/> <C-\><C-n>:FloatermToggle<CR>
 			tnoremap <C-.> <C-\><C-n>:FloatermNext<CR>
 			tnoremap <C-,> <C-\><C-n>:FloatermPrev<CR>
 			tnoremap <C-c> <C-\><C-n>:FloatermKill!<CR>
@@ -76,8 +50,8 @@ return {
 		keys = {
 			{ "<leader>u", ":UndotreeToggle<CR>", desc = "Undotree" },
 		},
-		config = function ()
-			vim.cmd[[let g:undotree_SetFocusWhenToggle = 1]]
-		end
+		config = function()
+			vim.cmd([[let g:undotree_SetFocusWhenToggle = 1]])
+		end,
 	},
 }
