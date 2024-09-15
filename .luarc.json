@@ -1,10 +1,13 @@
 {
 	"diagnostic.globals": ["vim"],
 	"diagnostic.disable": [
-		"different-requires"
+		"different-requires",
+		"autoRequire",
+		"required"
 	],
     "diagnostics.globals": [
         "vim",
         "session_filename_to_dir"
-    ]
+    ],
+    "completion.autoRequire": false
 }

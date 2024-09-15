@@ -5,11 +5,11 @@ return {
 		vim.o.timeout = true
 		vim.o.timeoutlen = 300
 	end,
-		opts = {
+		opt = {
 			plugins = {
 				spelling = true
 			},
-			window = {
+			win = {
 				border = "single",
 				position = "bottom",
 				winblend = 10,

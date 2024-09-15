@@ -11,24 +11,7 @@ return {
 		},
 		dependencies = { "luarocks.nvim" },
 		config = function()
-			require("rest-nvim").setup({
-				highlight = {
-					enable = true,
-					timeout = 100,
-				},
-				keybinds = {
-					{
-						"<leader>rr",
-						"<cmd>Rest run<CR>",
-						"Rest run under the cursor",
-					},
-					{
-						"<leader>rl",
-						"<cmd>Rest run last<cr>",
-						"Re-run last request",
-					},
-				},
-			})
+			require("rest-nvim").setup({})
 		end,
 	},
 }

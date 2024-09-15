@@ -3,8 +3,8 @@ local N = "n"
 
 local M = {}
 
-M.on_attach = function(client, bufnr)
-	local opts = { noremap = true, silent = true, buffer = bufnr }
+M.on_attach = function()
+	local opts = { noremap = true, silent = true }
 	--Lspsaga
 	map(N, "<leader>l", "<cmd>Lspsaga<CR>", opts, { desc = "Lspasaga" })
 	map(N, "<leader>lf", "<cmd>Lspsaga finder<CR>", opts, { desc = "Lspsaga finder" }) -- go to definition

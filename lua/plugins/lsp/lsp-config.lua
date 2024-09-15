@@ -30,40 +30,13 @@ return {
 						},
 						workspace = {
 							library = {
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.stdpath("config") .. "/lua"] = true,
+								vim.fn.expand("$VIMRUNTIME/lua"),
+								vim.fn.stdpath("config") .. "/lua" .. "/nvim/lua",
 							},
 						},
 					},
 				},
 			})
-
-			--emmet lsp
-			-- lspconf.emmet_ls.setup({
-			-- 	on_attach = on_attach,
-			-- 	capabilities = capabilities,
-			-- 	filetypes = {
-			-- 		"css",
-			-- 		"eruby",
-			-- 		"html",
-			-- 		"javascript",
-			-- 		"javascriptreact",
-			-- 		"less",
-			-- 		"sass",
-			-- 		"scss",
-			-- 		"svelte",
-			-- 		"pug",
-			-- 		"typescriptreact",
-			-- 		"vue",
-			-- 	},
-			-- 	init_options = {
-			-- 		html = {
-			-- 			options = {
-			-- 				["bem.enabled"] = true,
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
 
 			lspconf.jsonls.setup({
 				on_attach = on_attach,
@@ -76,7 +49,7 @@ return {
 			})
 
 			--Typescript and javascript lsp
-			lspconf.tsserver.setup({
+			lspconf.ts_ls.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})
@@ -88,8 +61,8 @@ return {
 
 			--html lsp
 			lspconf.html.setup({
-				capabilities = capabilities,
 				on_attach = on_attach,
+				capabilities = capabilities,
 				settings = {
 					html = {
 						format = {
@@ -97,6 +70,21 @@ return {
 							indentInnerHtml = true,
 						},
 					},
+				},
+			})
+
+			lspconf.clangd.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				settings = {
+					clangd = {},
+				},
+			})
+			lspconf.kotlin_language_server.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				settings = {
+					kotlin_language_server = {},
 				},
 			})
 

@@ -34,7 +34,7 @@ return {
 						border = "rounded",
 					},
 					completion = {
-						border = "rounded",
+						border = "none",
 						winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
 					},
 					scrollbar = true,
