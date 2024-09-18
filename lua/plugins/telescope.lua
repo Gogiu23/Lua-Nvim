@@ -1,11 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
-	-- keys = {
-	-- 	{ "<leader>f", desc = "Telescope" },
-	-- },
-	-- cmd = "Telescope",
-	-- module = "Telescope",
+	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/popup.nvim",
 		"nvim-lua/plenary.nvim",
@@ -136,7 +132,7 @@ return {
 		local extension = require("telescope")
 		local N = "n"
 		keymap(N, "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "find files" })
-		keymap(N, "<leader>fc", extension.extensions.file_browser.file_browser, { desc = "File browser" })
+		keymap(N, "<leader>fc", "<CMD>Telescope file_browser path=%:p:h<CR>", { desc = "File browser" })
 		keymap(N, "<leader>fz", "<cmd>Telescope live_grep<cr>", { desc = "live grep in cwd" })
 		keymap(N, "<leader>fs", builtin.grep_string, { desc = "find string under cursor" })
 		keymap(N, "<leader>fbb", builtin.buffers, { desc = "Buffers" })
