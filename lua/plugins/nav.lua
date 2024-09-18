@@ -3,6 +3,26 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
 		event = { "BufReadPre", "BufNewFile" },
+		keys = {
+			{
+				"<leader>e",
+				function()
+					require("nvim-tree.api").tree.toggle({
+						path = "cwd",
+					})
+				end,
+				desc = "Toggle Tree(cwd)",
+			},
+			{
+				"<leader>E",
+				function()
+					require("nvim-tree.api").tree.toggle({
+						path = "/",
+					})
+				end,
+				desc = "Toggle Tree (Root Dir)",
+			},
+		},
 		dependencies = {
 			{
 				"b0o/nvim-tree-preview.lua",

@@ -64,25 +64,6 @@ return {
 							end
 						end,
 					}),
-					--Using tab to complete only with one voice
-					-- ["<Tab>"] = cmp.mapping(function(fallback)
-					-- 	if cmp.visible() then
-					-- 		if #cmp.get_entries() == 1 then
-					-- 			cmp.confirm({ select = true })
-					-- 		else
-					-- 			cmp.select_next_item()
-					-- 		end
-					-- 	elseif luasnip.expand_or_jumpable() then
-					-- 		luasnip.expand_or_jump()
-					-- 	elseif has_words_before() then
-					-- 		cmp.complete()
-					-- 		if #cmp.get_entries() == 1 then
-					-- 			cmp.confirm({ select = true })
-					-- 		end
-					-- 	else
-					-- 		fallback()
-					-- 	end
-					-- end, { "i", "s" }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
 						if cmp.visible() then
@@ -112,22 +93,6 @@ return {
 					{ name = "buffer" },
 					{ name = "path" },
 					{ name = "emmet" },
-					-- {
-					-- 	name = "html-css",
-					-- 	option = {
-					-- 		enable_on = {
-					-- 			"html",
-					-- 			"css",
-					-- 			"javascript",
-					-- 			"javascriptreact",
-					-- 		},
-					-- 		file_extensions = { "css", "sass", "less" },
-					-- 		style_sheets = {
-					-- 			"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css",
-					-- 		},
-					-- 	},
-					-- },
-					-- { name = "nvim_lua" },
 				}),
 				-- `/` cmdline setup.
 				cmp.setup.cmdline("/", {
@@ -201,15 +166,4 @@ return {
 			delete_check_events = "TextChanged",
 		},
 	},
-	-- {
-	-- 	"Jezda1337/nvim-html-css",
-	-- 	event = { "BufReadPre", "BufNewFile" },
-	-- 	dependencies = {
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 		"nvim-lua/plenary.nvim",
-	-- 	},
-	-- 	config = function()
-	-- 		require("html-css"):setup()
-	-- 	end,
-	-- },
 }

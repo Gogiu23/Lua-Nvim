@@ -7,7 +7,6 @@ return {
 		spec = {
 			mode = { "n", "v" },
 			{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
-			{ "<leader>w", group = "Window" },
 		},
 	},
 	config = function(_, opts)
@@ -16,6 +15,8 @@ return {
 		wk.add({
 			{ "<leader>f", group = "Telescope", desc = "Telescope" },
 			{ "<leader>s", group = "Search Engine" },
+			{ "<leader>q", group = "Quit/exit" },
+			{ "<leader>t", group = "File template" },
 		})
 	end,
 }

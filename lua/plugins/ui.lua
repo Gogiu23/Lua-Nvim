@@ -16,15 +16,7 @@ return {
 		event = { "BufreadPre", "BufNewFile" },
 		config = function()
 			local option = vim.opt
-			local map = vim.keymap.set
-			local N = "n"
-			local opt = { noremap = false, silent = true }
-
 			option.showtabline = 2
-			map(N, "<C-.>", "<cmd>bnext<CR>", opt)
-			map(N, "<C-,>", "<cmd>bprev<CR>", opt)
-			map(N, "<C-c>", "<cmd>bdelete<CR>", opt)
-			local map = vim.keymap.set
 
 			local custom_fname = require("lualine.components.filename"):extend()
 			local highlight = require("lualine.highlight")
@@ -55,12 +47,6 @@ return {
 					vim.bo.modified and self.status_colors.modified or self.status_colors.saved
 				) .. data
 				return data
-			end
-			local function keymap()
-				if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
-					return "⌨ " .. vim.b.keymap_name
-				end
-				return ""
 			end
 
 			require("lualine").setup({
@@ -136,36 +122,17 @@ return {
 							"location",
 							icon = { "", color = { bold = true } },
 						},
+						{
+							"searchcount",
+						},
+						{
+							"os.date('󱑇 %H:%M')",
+						},
+						{
+							"os.date(' %a%d%b')",
+						},
 					},
 				},
-				-- tabline = {
-				-- 	lualine_a = {
-				-- 		{
-				-- 			"filetype",
-				-- 			icon_only = true,
-				-- 			icon = { align = "right" },
-				-- 		},
-				-- 		{
-				-- 			"buffers",
-				-- 			mode = 0,
-				-- 			use_mode_colors = true,
-				-- 			symbols = {
-				-- 				modified = " 󰽂 ",
-				-- 				alternate_file = "#",
-				-- 				directory = " ",
-				-- 			},
-				-- 		},
-				-- 	},
-				-- 	lualine_b = {},
-				-- 	lualine_c = {},
-				-- 	lualine_x = {},
-				-- 	lualine_y = {},
-				-- 	lualine_z = {
-				-- 		"searchcount",
-				-- 		"os.date('󱑇 %H:%M')",
-				-- 		"os.date(' %a%m%b')",
-				-- 	},
-				-- },
 			})
 		end,
 	},

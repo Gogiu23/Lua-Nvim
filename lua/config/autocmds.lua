@@ -67,3 +67,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.lsp.buf.format({ name = "efm", async = true })
 	end,
 })
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = augroup("highlight_yank"),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})

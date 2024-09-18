@@ -1,17 +1,17 @@
 local map = vim.keymap.set
+local I = "i"
 local N = "n"
 local V = "v"
 local E = "jk"
 local opts = { remap = true, silent = true }
 
---activate template html
-map(N, "<leader>r", "<CMD>read ~/templateHtml/index.html<CR>", { desc = "template html", expr = true })
+--Activate template html
+map(N, "<leader>tr", "<CMD>read ~/templateHtml/index.html<CR>", { desc = "template html", expr = true })
 
---nvimtree space activate
-map(N, "<space>", "<cmd>NvimTreeToggle<CR>", opts)
-
---AUTOINDENT
-vim.cmd([[nnoremap <leader><leader> :normal gg=G''<CR>]])
+--Moving between buffers and delete ones
+map(N, "<C-.>", "<cmd>bnext<CR>", opts)
+map(N, "<C-,>", "<cmd>bprev<CR>", opts)
+map(N, "<C-c>", "<cmd>BufferDelete<CR>", opts)
 
 --MAPS FOR EVOLUTE THE (JKHL) KEYNOTES
 map({ N, V }, "L", "<end>", { noremap = true })
@@ -23,16 +23,16 @@ vim.cmd([[vnoremap <C-j> :m '>+1<CR>gv=gv]])
 vim.cmd([[vnoremap <C-k> :m '<-2<CR>gv=gv]])
 
 -- Resize window using <ctrl> arrow keys
-map("n", "<C-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-k>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-l>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-h>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map(N, "<C-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map(N, "<C-k>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map(N, "<C-l>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map(N, "<C-h>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Clear search with <esc>
-map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+map({ I, N }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 --Save File
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+map({ "i", "x", "n", "s" }, "<C-s>", "<CMD>w!<cr><esc>", opts)
 
 --Toggle paste mode
 map("n", "<leader>sp", "<cmd>set paste!<CR>", { desc = "pastetoggle" })
