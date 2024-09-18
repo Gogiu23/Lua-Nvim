@@ -1,15 +1,12 @@
 return {
-	"NvChad/nvim-colorizer.lua",
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		require("colorizer").setup({
-			filetypes = {
-				"*",
-				cmp_docs = { always_update = true },
-			},
-			user_default_options = {
-				mode = "background",
-			},
-		})
-	end,
+	{
+		"brenoprata10/nvim-highlight-colors",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("nvim-highlight-colors").setup({
+				render = "virtual",
+				virtual_symbol = "",
+			})
+		end,
+	},
 }

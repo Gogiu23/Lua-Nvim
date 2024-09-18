@@ -19,7 +19,7 @@ return {
 		wk.setup(opts)
 		wk.add({
 			{ "<leader>f", group = "Telescope", desc = "Telescope" },
-			{ "<leader>s", group = "Search Engine" },
+			{ "<leader>s", group = "Noice, Google and GPT" },
 			{ "<leader>q", group = "Quit/exit" },
 			{ "<leader>t", group = "File template" },
 		})

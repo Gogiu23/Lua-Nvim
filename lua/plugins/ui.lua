@@ -1,6 +1,7 @@
 return {
 	{
 		"romgrk/barbar.nvim",
+		event = { "BufreadPre", "BufNewFile" },
 		dependencies = {
 			"lewis6991/gitsigns.nvim",
 		},
