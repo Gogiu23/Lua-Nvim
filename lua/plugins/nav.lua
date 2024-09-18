@@ -319,8 +319,9 @@ return {
 	},
 	{
 		"stevearc/aerial.nvim",
+		lazy = true,
 		keys = {
-			{ "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Aerial toggle" },
+			{ "<leader>aa", "<cmd>AerialToggle right<CR>", desc = "Aerial toggle" },
 		},
 		config = function()
 			require("aerial").setup({})
@@ -329,6 +330,9 @@ return {
 	--Oil nvim
 	{
 		"stevearc/oil.nvim",
+		keys = {
+			{ "-", "<CMD>Oil<CR>", desc = "Oil Explorer" },
+		},
 		event = function()
 			if vim.fn.argc() == 1 then
 				return "ColorScheme"
@@ -345,7 +349,6 @@ return {
 					["<C-x>"] = "actions.select_split",
 				},
 			})
-			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Oil" })
 		end,
 	},
 }

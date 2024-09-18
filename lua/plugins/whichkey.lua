@@ -8,6 +8,10 @@ return {
 			mode = { "n", "v" },
 			{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
 			{ "<leader>d", group = "Dashboard", icon = { icon = " ", color = "red" } },
+			{ "<leader>M", group = "Multicursor", icon = { icon = "󱢓 ", color = "purple" } },
+			{ "<leader>g", group = "Git", icon = { icon = "󰊢 ", color = "orange" } },
+			{ "<leader>l", group = "Definitions", icon = { icon = "󰟏 ", color = "yellow" } },
+			{ "<leader>a", group = "Outline", icon = { icon = "󰙀 ", color = "green" } },
 		},
 	},
 	config = function(_, opts)

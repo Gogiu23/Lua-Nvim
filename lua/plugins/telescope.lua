@@ -144,14 +144,14 @@ return {
 		keymap(N, "<leader>fp", builtin.planets, { desc = "Planets" })
 		keymap(N, "<leader>fhi", builtin.command_history, { desc = "command history" })
 		keymap(N, "<leader>fo", builtin.oldfiles, { desc = "oldfiles" })
-		keymap(N, "<leader>ft", builtin.tags, { desc = "search tags(ctags -R)" })
 		keymap(N, "<leader>fm", builtin.man_pages, { desc = "man pages" })
 		keymap(N, "<leader>fbf", builtin.current_buffer_fuzzy_find, { desc = "fz in the current buffer" })
 		keymap(N, "<leader>fbt", builtin.current_buffer_tags, { desc = "fz tags in current buffer" })
-		keymap(N, "<leader>fgc", builtin.git_commits, { desc = "list all commits with diff preview" })
-		keymap(N, "<leader>fgb", builtin.git_bcommits, { desc = "list all buffers commits" })
-		keymap(N, "<leader>fgr", builtin.git_branches, { desc = "list all branches" })
-		keymap(N, "<leader>fgs", builtin.git_status, { desc = "list git status" })
 		keymap(N, "<leader>fhh", builtin.highlights, { desc = "Highlights" })
+		--Git Telescope
+		keymap(N, "<leader>gc", builtin.git_commits, { desc = "Git Commits" })
+		keymap(N, "<leader>gb", builtin.git_bcommits, { desc = "Git Buffers" })
+		keymap(N, "<leader>gr", builtin.git_branches, { desc = "Git branches" })
+		keymap(N, "<leader>gs", builtin.git_status, { desc = "Git Status" })
 	end,
 }

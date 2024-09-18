@@ -4,9 +4,10 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("lspsaga").setup({
-				lightbulb = {
+				symbol_in_winbar = {
 					enable = true,
-					sign = false,
+					separator = " > ",
+					hide_keyword = true,
 				},
 				move_in_saga = {
 					prev = "<C-k>",
