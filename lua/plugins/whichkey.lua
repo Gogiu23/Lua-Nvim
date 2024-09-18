@@ -7,6 +7,7 @@ return {
 		spec = {
 			mode = { "n", "v" },
 			{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+			{ "<leader>d", group = "Dashboard", icon = { icon = " ", color = "red" } },
 		},
 	},
 	config = function(_, opts)

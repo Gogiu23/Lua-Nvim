@@ -11,6 +11,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
 		"nvim-telescope/telescope-media-files.nvim",
+		"HUAHUAI23/telescope-session.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -49,10 +50,8 @@ return {
 			},
 			pickers = {},
 			extensions = {
-				media_files = {
-					-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-					filetypes = { "png", "webp", "jpg", "jpeg" },
-					find_cmd = "rg",
+				xray23 = {
+					sessionDir = vim.fn.stdpath("data") .. "/vimSession",
 				},
 				file_browser = {
 					theme = "ivy",
@@ -131,13 +130,12 @@ return {
 		end
 		telescope.load_extension("file_browser")
 		telescope.load_extension("fzf")
-		telescope.load_extension("media_files")
+		telescope.load_extension("xray23")
 		local keymap = vim.keymap.set
 		local builtin = require("telescope.builtin")
 		local extension = require("telescope")
 		local N = "n"
 		keymap(N, "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "find files" })
-		keymap(N, "<leader>fa", extension.extensions.media_files.media_files, { desc = "Telescope Media files" })
 		keymap(N, "<leader>fc", extension.extensions.file_browser.file_browser, { desc = "File browser" })
 		keymap(N, "<leader>fz", "<cmd>Telescope live_grep<cr>", { desc = "live grep in cwd" })
 		keymap(N, "<leader>fs", builtin.grep_string, { desc = "find string under cursor" })

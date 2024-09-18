@@ -22,7 +22,7 @@ return {
 			]]
 			logo = string.rep("\n", 8) .. logo .. "\n\n"
 
-			map("n", "<leader>d", ":Dashboard<CR>", { desc = "Dashboard" })
+			map("n", "<leader>d", "<CMD>Dashboard<CR>")
 			vim.opt_global.showtabline = 2
 
 			dash.setup({
@@ -30,15 +30,6 @@ return {
 				shortcut_type = "letter",
 				config = {
 					header = vim.split(logo, "\n"),
-					-- 	week_header = {
-					-- 		enable = true,
-					-- 		append = { "   " .. "May Be The Day to Avoid The Rabbit Hole" .. " 󰵼 " },
-					-- 	},
-					-- disable_move = false,
-					-- hide = {
-					-- 	statusline = true,
-					-- 	tabline = false,
-					-- },
 					center = {
 						{
 							desc = "󰎔 New file",
@@ -58,6 +49,11 @@ return {
 							desc = "Recent Files",
 							action = "Telescope oldfiles",
 							key = "r",
+						},
+						{
+							desc = "󰆓 Saved Sessions",
+							action = "Telescope xray23 list",
+							key = "s",
 						},
 						{
 							desc = "  Browse Files ",

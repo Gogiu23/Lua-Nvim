@@ -5,6 +5,11 @@ local V = "v"
 local E = "jk"
 local opts = { remap = true, silent = true }
 
+--Quit session and save sessions
+map(N, "<leader>qq", "<CMD>qa!<CR>", { desc = "Quit all" })
+map(N, "<leader>qw", "<CMD>wq!<CR>", { desc = "Quit and save" })
+map(N, "<leader>qs", "<CMD>Telescope xray23 save<CR>", { desc = "Save session" })
+
 --Activate template html
 map(N, "<leader>tr", "<CMD>read ~/templateHtml/index.html<CR>", { desc = "template html", expr = true })
 
