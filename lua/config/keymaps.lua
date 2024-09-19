@@ -5,6 +5,9 @@ local V = "v"
 local E = "jk"
 local opts = { remap = true, silent = true }
 
+--LSP
+map(N, "<leader>Li", "<CMD>LspInfo<CR>", { desc = "LSP Info" })
+
 --Quit session and save sessions
 map(N, "<leader>qq", "<CMD>qa!<CR>", { desc = "Quit all" })
 map(N, "<leader>qw", "<CMD>wq!<CR>", { desc = "Quit and save" })

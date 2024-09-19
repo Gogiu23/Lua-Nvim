@@ -76,10 +76,8 @@ return {
 			lspconf.clangd.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
-				settings = {
-					clangd = {},
-				},
 			})
+
 			lspconf.kotlin_language_server.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,

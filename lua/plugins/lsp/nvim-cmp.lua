@@ -1,5 +1,141 @@
 return {
 	{
+		"ray-x/navigator.lua",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			{ "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+		},
+		config = function()
+			require("navigator").setup({
+				mason = true,
+				default_mapping = false,
+				keymaps = {
+					{ key = "<leader>Lr", func = require("navigator.reference").async_ref, desc = "References" },
+					{ key = "<leader>Ld", func = require("navigator.definition").definition, desc = "Definition" },
+					{ key = "<leader>LD", func = vim.lsp.buf.declaration, desc = "Declaration" },
+					-- for lsp handler
+					{
+						key = "<leader>Lp",
+						func = require("navigator.definition").definition_preview,
+						"gp",
+						desc = "Definition_preview",
+					}, -- paste
+					{
+						key = "<leader>LP",
+						func = require("navigator.definition").type_definition_preview,
+						"gP",
+						desc = "Type_definition_preview",
+					}, -- paste
+					{
+						key = "<leader>Lt",
+						func = require("navigator.treesitter").buf_ts,
+						desc = "Treesitter buffer",
+					},
+					{
+						key = "<leader>LT",
+						func = require("navigator.treesitter").bufs_ts,
+						desc = "Treesitter Buffers",
+					},
+					{
+						key = "<leader>Lc",
+						func = require("navigator.ctags").ctags,
+						desc = "Ctags",
+					},
+					{
+						key = "<leader>ca",
+						func = require("navigator.codeAction").code_action,
+						desc = "Code_action",
+						mode = { "n", "v" },
+					},
+					-- { key = '<Leader>re', func = 'rename()' },
+					{
+						key = "<leader>Lr",
+						func = require("navigator.rename").rename,
+						desc = "Rename",
+					},
+					{
+						key = "<leader>Li",
+						func = vim.lsp.buf.incoming_calls,
+						desc = "incoming_calls",
+					},
+					{
+						key = "<Leader>Lo",
+						func = vim.lsp.buf.outgoing_calls,
+						desc = "outgoing_calls",
+					},
+					-- {
+					-- 	key = "gi",
+					-- 	func = vim.lsp.buf.implementation,
+					-- 	desc = "implementation",
+					-- }, -- insert
+					-- {
+					-- 	key = "<Space>D",
+					-- 	func = vim.lsp.buf.type_definition,
+					-- 	desc = "type_definition",
+					-- },
+					{
+						key = "<leader>Ls",
+						func = require("navigator.diagnostics").show_diagnostics,
+						desc = "Show diagnostics",
+					},
+					{
+						key = "<leader>LS",
+						func = require("navigator.diagnostics").show_buf_diagnostics,
+						desc = "Show diagnostics in buffer",
+					},
+					{
+						key = "<Leader>Lss",
+						func = require("navigator.diagnostics").toggle_diagnostics,
+						desc = "Toggle diagnostics",
+					},
+					{
+						key = "]r",
+						func = require("navigator.treesitter").goto_next_usage,
+						desc = "goto_next_usage",
+					},
+					{
+						key = "[r",
+						func = require("navigator.treesitter").goto_previous_usage,
+						desc = "goto_previous_usage",
+					},
+					-- {
+					-- 	key = "<Space>wa",
+					-- 	func = require("navigator.workspace").add_workspace_folder,
+					-- 	desc = "add_workspace_folder",
+					-- },
+					-- {
+					-- 	key = "<Space>wr",
+					-- 	func = require("navigator.workspace").remove_workspace_folder,
+					-- 	desc = "remove_workspace_folder",
+					-- },
+					{
+						key = "<leader>Lf",
+						func = vim.lsp.buf.format,
+						desc = "Format",
+						mode = { "n", "v", "x" },
+					},
+					-- {
+					-- 	key = "<Space>gm",
+					-- 	func = require("navigator.formatting").range_format,
+					-- 	mode = "n",
+					-- 	desc = "range format operator e.g gmip",
+					-- },
+					-- {
+					-- 	key = "<Space>wl",
+					-- 	func = require("navigator.workspace").list_workspace_folders,
+					-- 	desc = "list_workspace_folders",
+					-- },
+					-- {
+					-- 	key = "<Space>la",
+					-- 	func = require("navigator.codelens").run_action,
+					-- 	desc = "run code lens action",
+					-- 	mode = "n",
+					-- },
+				},
+			})
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
@@ -13,11 +149,9 @@ return {
 			{ "jackieaskins/cmp-emmet", build = "npm run release" },
 		},
 		opts = function()
-			local has_words_before = require("util.cmp").has_words_before
 			-- require("luasnip.loaders.from_vscode").load()
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
-			local lspkind = require("lspkind")
 			local defaults = require("cmp.config.default")()
 
 			return {

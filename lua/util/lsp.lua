@@ -1,9 +1,10 @@
 local M = {}
 
-M.on_attach = function()
+M.on_attach = function(client, bufnr)
 	local map = vim.keymap.set
 	local N = "n"
-	--Lspsaga
+
+	-- Lspsaga
 	map(N, "<leader>lf", "<cmd>Lspsaga finder<CR>", { desc = "Finder" }) -- go to definition
 	map(N, "<leader>ld", "<cmd>Lspsaga peek_definition<CR>", { desc = "See definition" }) -- peak definition
 	map(N, "<leader>lc", "<cmd>Lspsaga code_action<CR>", { desc = "code actions" })

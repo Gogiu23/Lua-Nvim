@@ -129,21 +129,22 @@ return {
 		telescope.load_extension("xray23")
 		local keymap = vim.keymap.set
 		local builtin = require("telescope.builtin")
-		local extension = require("telescope")
 		local N = "n"
 		keymap(N, "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "find files" })
 		keymap(N, "<leader>fc", "<CMD>Telescope file_browser path=%:p:h<CR>", { desc = "File browser" })
 		keymap(N, "<leader>fz", "<cmd>Telescope live_grep<cr>", { desc = "live grep in cwd" })
 		keymap(N, "<leader>fs", builtin.grep_string, { desc = "find string under cursor" })
-		keymap(N, "<leader>fbb", builtin.buffers, { desc = "Buffers" })
-		keymap(N, "<leader>fht", builtin.help_tags, { desc = "tags_helps" })
 		keymap(N, "<leader>fp", builtin.planets, { desc = "Planets" })
-		keymap(N, "<leader>fhi", builtin.command_history, { desc = "command history" })
-		keymap(N, "<leader>fo", builtin.oldfiles, { desc = "oldfiles" })
+		keymap(N, "<leader>r", builtin.oldfiles, { desc = "oldfiles" })
 		keymap(N, "<leader>fm", builtin.man_pages, { desc = "man pages" })
-		keymap(N, "<leader>fbf", builtin.current_buffer_fuzzy_find, { desc = "fz in the current buffer" })
-		keymap(N, "<leader>fbt", builtin.current_buffer_tags, { desc = "fz tags in current buffer" })
-		keymap(N, "<leader>fhh", builtin.highlights, { desc = "Highlights" })
+		--Buffers Telescope
+		keymap(N, "<leader>bb", builtin.buffers, { desc = "Buffers" })
+		keymap(N, "<leader>bf", builtin.current_buffer_fuzzy_find, { desc = "fz in the current buffer" })
+		keymap(N, "<leader>bt", builtin.current_buffer_tags, { desc = "fz tags in current buffer" })
+		--Help Telescope
+		keymap(N, "<leader>ht", builtin.help_tags, { desc = "tags_helps" })
+		keymap(N, "<leader>hi", builtin.command_history, { desc = "command history" })
+		keymap(N, "<leader>hh", builtin.highlights, { desc = "Highlights" })
 		--Git Telescope
 		keymap(N, "<leader>gc", builtin.git_commits, { desc = "Git Commits" })
 		keymap(N, "<leader>gb", builtin.git_bcommits, { desc = "Git Buffers" })

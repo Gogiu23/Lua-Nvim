@@ -1,0 +1,80 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+M.has_words_before 	util/cmp.lua	8;"	f
+M.on_attach 	util/lsp.lua	3;"	f
+["<S-Tab>"] 	plugins/lsp/nvim-cmp.lua	217;"	f
+["<Tab>"] 	plugins/lsp/nvim-cmp.lua	201;"	f
+augroup	config/autocmds.lua	1;"	f
+c 	plugins/lsp/nvim-cmp.lua	193;"	f
+callback 	config/autocmds.lua	33;"	f
+callback 	config/autocmds.lua	42;"	f
+callback 	config/autocmds.lua	60;"	f
+callback 	config/autocmds.lua	74;"	f
+callback 	config/autocmds.lua	7;"	f
+callback 	plugins/mini.lua	83;"	f
+config 	plugins/colorizer.lua	5;"	f
+config 	plugins/colorscheme.lua	20;"	f
+config 	plugins/colorscheme.lua	6;"	f
+config 	plugins/dashboard.lua	107;"	f
+config 	plugins/dashboard.lua	10;"	f
+config 	plugins/indent_blankline.lua	6;"	f
+config 	plugins/init.lua	14;"	f
+config 	plugins/init.lua	53;"	f
+config 	plugins/lsp/lsp-config.lua	9;"	f
+config 	plugins/lsp/lspsaga.lua	5;"	f
+config 	plugins/lsp/mason.lua	16;"	f
+config 	plugins/lsp/mason.lua	21;"	f
+config 	plugins/lsp/nvim-cmp.lua	270;"	f
+config 	plugins/lsp/nvim-cmp.lua	285;"	f
+config 	plugins/lsp/nvim-cmp.lua	8;"	f
+config 	plugins/markDown.lua	4;"	f
+config 	plugins/mini.lua	10;"	f
+config 	plugins/mini.lua	17;"	f
+config 	plugins/mini.lua	24;"	f
+config 	plugins/nav.lua	31;"	f
+config 	plugins/nav.lua	326;"	f
+config 	plugins/nav.lua	344;"	f
+config 	plugins/notif.lua	50;"	f
+config 	plugins/outline.lua	8;"	f
+config 	plugins/rest.lua	8;"	f
+config 	plugins/telescope.lua	16;"	f
+config 	plugins/treesitter.lua	8;"	f
+config 	plugins/ui.lua	18;"	f
+config 	plugins/whichkey.lua	16;"	f
+custom_fname:init	plugins/ui.lua	26;"	f
+custom_fname:update_status	plugins/ui.lua	45;"	f
+event 	plugins/dashboard.lua	4;"	f
+event 	plugins/nav.lua	336;"	f
+expand 	plugins/lsp/nvim-cmp.lua	296;"	f
+footer 	plugins/dashboard.lua	93;"	f
+format 	plugins/lsp/nvim-cmp.lua	254;"	f
+i 	plugins/lsp/nvim-cmp.lua	184;"	f
+init 	plugins/mini.lua	101;"	f
+init 	plugins/mini.lua	68;"	f
+init 	plugins/ui.lua	8;"	f
+local chatgpt 	config/keymaps.lua	61;"	f
+local search 	config/keymaps.lua	53;"	f
+my_on_attach	plugins/nav.lua	33;"	f
+opts	plugins/nav.lua	35;"	f
+opts 	plugins/lsp/nvim-cmp.lua	151;"	f
+opts 	plugins/lsp/nvim-cmp.lua	294;"	f
+opts 	plugins/mini.lua	30;"	f
+package.preload["nvim-web-devicons"] 	plugins/mini.lua	102;"	f
+predicate 	plugins/mini.lua	48;"	f
+{ "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode 	plugins/notif.lua	41;"	f
+{ "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent 	plugins/notif.lua	48;"	f
+{ "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent 	plugins/notif.lua	47;"	f
+{ "<c-s>", mode 	plugins/searchReplace.lua	41;"	f
+{ "<leader>sna", function() require("noice").cmd("all") end, desc 	plugins/notif.lua	44;"	f
+{ "<leader>snd", function() require("noice").cmd("dismiss") end, desc 	plugins/notif.lua	45;"	f
+{ "<leader>snh", function() require("noice").cmd("history") end, desc 	plugins/notif.lua	43;"	f
+{ "<leader>snl", function() require("noice").cmd("last") end, desc 	plugins/notif.lua	42;"	f
+{ "<leader>snt", function() require("noice").cmd("pick") end, desc 	plugins/notif.lua	46;"	f
+{ "R", mode 	plugins/searchReplace.lua	40;"	f
+{ "S", mode 	plugins/searchReplace.lua	38;"	f
+{ "r", mode 	plugins/searchReplace.lua	39;"	f
+{ "s", mode 	plugins/searchReplace.lua	37;"	f

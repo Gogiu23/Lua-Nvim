@@ -13,13 +13,5 @@
 		}
 	},
 	"languageserver": {
-		"ast-grep": {
-			"command": "sg",
-			"args": ["lsp"],
-			"filetypes": ["html"],
-			"rootPatterns": [
-				"sgconfig.yml"
-			]
-		}
 	}
 }

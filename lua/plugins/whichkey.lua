@@ -10,7 +10,6 @@ return {
 			{ "<leader>d", group = "Dashboard", icon = { icon = " ", color = "red" } },
 			{ "<leader>M", group = "Multicursor", icon = { icon = "󱢓 ", color = "purple" } },
 			{ "<leader>g", group = "Git", icon = { icon = "󰊢 ", color = "orange" } },
-			{ "<leader>l", group = "Definitions", icon = { icon = "󰟏 ", color = "yellow" } },
 			{ "<leader>a", group = "Outline", icon = { icon = "󰙀 ", color = "green" } },
 		},
 	},
@@ -22,6 +21,10 @@ return {
 			{ "<leader>s", group = "Noice, Google and GPT" },
 			{ "<leader>q", group = "Quit/exit" },
 			{ "<leader>t", group = "File template" },
+			{ "<leader>L", group = "LSP", icon = { icon = "󰟏 ", color = "yellow" } },
+			{ "<leader>h", group = "Help", icon = { icon = "󰞋 ", color = "yellow" } },
+			{ "<leader>b", group = "Buffers", icon = { icon = " ", color = "cyan" } },
+			{ "<leader>c", group = "Code" },
 		})
 	end,
 }
