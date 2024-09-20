@@ -11,7 +11,8 @@ return {
 			{ "<leader>M", group = "Multicursor", icon = { icon = "󱢓 ", color = "purple" } },
 			{ "<leader>g", group = "Git", icon = { icon = "󰊢 ", color = "orange" } },
 			{ "<leader>a", group = "Outline", icon = { icon = "󰙀 ", color = "green" } },
-			{"<leader>l", group = "Lazy", icon = {icon = "󰒲 ", color = "cyan"}}
+			{ "<leader>l", group = "Lazy", icon = { icon = "󰒲 ", color = "cyan" } },
+			{ "<leader>sg", group = "Google", icon = { icon = "󰊯 ", color = "yellow" } },
 		},
 	},
 	config = function(_, opts)
@@ -19,6 +20,7 @@ return {
 		wk.setup(opts)
 		wk.add({
 			{ "<leader>f", group = "Telescope", desc = "Telescope" },
+			{ "<leader>F", group = "Format", icon = { icon = "󰉶 ", color = "yellow" } },
 			{ "<leader>s", group = "Noice, Google and GPT" },
 			{ "<leader>q", group = "Quit/exit" },
 			{ "<leader>t", group = "File template" },
@@ -26,7 +28,7 @@ return {
 			{ "<leader>h", group = "Help", icon = { icon = "󰞋 ", color = "yellow" } },
 			{ "<leader>b", group = "Buffers", icon = { icon = " ", color = "cyan" } },
 			{ "<leader>c", group = "Code" },
-			{ "<leader>m", group = "Mason", icon = { icon = "󱈚 ", color = "blue"} },
+			{ "<leader>m", group = "Mason", icon = { icon = "󱈚 ", color = "blue" } },
 		})
 	end,
 }

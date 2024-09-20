@@ -4,8 +4,8 @@ return {
 	dependencies = {
 		"mason.nvim",
 		"hrsh7th/cmp-nvim-lsp",
-		{"antosha417/nvim-lsp-file-operations", config = true},
-		{"folke/neodev.nvim", opts = {}},
+		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		--import nvim-lspconfig plugin
@@ -18,10 +18,10 @@ return {
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 		local N = "n"
 		local V = "v"
-		vim.api.nvim_create_autocmd("LspAttach",{
+		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				local opts = {buffer = ev.buf , silent = true}
+				local opts = { buffer = ev.buf, silent = true }
 				--set keybinds
 				opts.desc = "Show LSP references"
 				map(N, "gR", "<CMD>Telescope lsp_references<CR>", opts)
@@ -34,7 +34,7 @@ return {
 				opts.desc = "LSP Type definitions"
 				map(N, "gt", "<CMD>Telescope lsp_type_definitions<CR>", opts)
 				opts.desc = "Code Action"
-				map({N, V}, "<leader>ca", vim.lsp.buf.code_action, opts)
+				map({ N, V }, "<leader>ca", vim.lsp.buf.code_action, opts)
 				opts.desc = "Smart Rename"
 				map(N, "gr", vim.lsp.buf.rename, opts)
 				opts.desc = "Diagnostics"
@@ -50,33 +50,28 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 		end
-		local servers = {'clangd', 'ts_ls'}
+		local servers = { "clangd", "ts_ls", "lua_ls" }
 		for _, lsp in ipairs(servers) do
-			lspconfig[lsp].setup {
+			lspconfig[lsp].setup({
 				capabilities = capabilities,
-			}
+			})
 		end
 		mason_lspconfig.setup_handlers({
-			function(efm)
-				lspconfig[efm].setup({
-					capabilities = capabilities,
-				})
-			end,
 			["lua_ls"] = function()
 				lspconfig["lua_ls"].setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
 							diagnostics = {
-								globals = {"vim"},
+								globals = { "vim" },
 							},
 							completion = {
-								callSnippet = 'Replace',
+								callSnippet = "Replace",
 							},
 						},
 					},
 				})
-			end
+			end,
 		})
-	end
+	end,
 }

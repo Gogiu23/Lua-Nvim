@@ -5,6 +5,22 @@ local V = "v"
 local E = "jk"
 local opts = { remap = true, silent = true }
 
+--LazyGit
+map(N, "<leader>gl", function()
+	vim.cmd(":FloatermToggle")
+	vim.cmd("startinsert")
+	vim.fn.chansend(vim.b.terminal_job_id, "lazygit\n")
+end, opts)
+
+--Formar on range
+map({ N, V }, "<leader>Fr", function()
+	require("conform").format({
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 1000,
+	})
+end, { desc = "Range format (Visual Mode)" })
+
 --Lazy
 map(N, "<leader>l", "<CMD>Lazy<CR>", opts)
 --Mason
