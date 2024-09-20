@@ -7,7 +7,7 @@ return {
 	--Floatterm
 	{
 		"voldikss/vim-floaterm",
-		lazy = true,
+		cmd = "FloatermToggle",
 		keys = {
 			{ "<C-/>", ":FloatermToggle<CR>", desc = "floaterm" },
 		},

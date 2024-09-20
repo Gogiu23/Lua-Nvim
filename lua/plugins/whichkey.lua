@@ -12,6 +12,7 @@ return {
 			{ "<leader>g", group = "Git", icon = { icon = "󰊢 ", color = "orange" } },
 			{ "<leader>a", group = "Outline", icon = { icon = "󰙀 ", color = "green" } },
 			{ "<leader>l", group = "Lazy", icon = { icon = "󰒲 ", color = "cyan" } },
+			{ "<leader>gl", group = "Lazygit", icon = { icon = "󰒲 ", color = "cyan" } },
 			{ "<leader>sg", group = "Google", icon = { icon = "󰊯 ", color = "yellow" } },
 		},
 	},
