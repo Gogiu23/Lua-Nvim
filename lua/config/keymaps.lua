@@ -5,6 +5,11 @@ local V = "v"
 local E = "jk"
 local opts = { remap = true, silent = true }
 
+--Lazy
+map(N, "<leader>l", "<CMD>Lazy<CR>", opts)
+--Mason
+map(N, "<leader>m", "<CMD>Mason<CR>")
+
 --LSP
 map(N, "<leader>Li", "<CMD>LspInfo<CR>", { desc = "LSP Info" })
 

@@ -11,6 +11,7 @@ return {
 			{ "<leader>M", group = "Multicursor", icon = { icon = "󱢓 ", color = "purple" } },
 			{ "<leader>g", group = "Git", icon = { icon = "󰊢 ", color = "orange" } },
 			{ "<leader>a", group = "Outline", icon = { icon = "󰙀 ", color = "green" } },
+			{"<leader>l", group = "Lazy", icon = {icon = "󰒲 ", color = "cyan"}}
 		},
 	},
 	config = function(_, opts)
@@ -25,6 +26,7 @@ return {
 			{ "<leader>h", group = "Help", icon = { icon = "󰞋 ", color = "yellow" } },
 			{ "<leader>b", group = "Buffers", icon = { icon = " ", color = "cyan" } },
 			{ "<leader>c", group = "Code" },
+			{ "<leader>m", group = "Mason", icon = { icon = "󱈚 ", color = "blue"} },
 		})
 	end,
 }

@@ -41,11 +41,6 @@ return {
 		cmd = "Neoconf",
 	},
 	{
-		"folke/neodev.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		opts = {},
-	},
-	{
 		"mbbill/undotree",
 		keys = {
 			{ "<leader>au", ":UndotreeToggle<CR>", desc = "Undotree" },

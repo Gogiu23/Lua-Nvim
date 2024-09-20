@@ -22,7 +22,7 @@ require("lazy").setup({
 	},
 	{
 		defaults = {
-			lazy = false,
+			lazy = true,
 		},
 		icons = {
 			require = "🌙",
@@ -52,6 +52,11 @@ require("lazy").setup({
 			-- automatically check for config file changes and reload the ui
 			enabled = true,
 			notify = false, -- get a notification when changes are found
+		},
+		install = {
+			colorscheme = {
+				'tokyonight',
+			},
 		},
 		checker = {
 			-- automatically check for plugin updates

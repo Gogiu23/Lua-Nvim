@@ -6,7 +6,13 @@ return {
 			"lewis6991/gitsigns.nvim",
 		},
 		init = function()
-			vim.g.barbar_auto_setup = true
+			vim.g.barbar_auto_setup = false
+			local barbar = require("barbar")
+			return {
+				barbar.setup({
+					insert_at_end = true,
+				})
+			}
 		end,
 		opts = {},
 		version = "^1.0.0",
