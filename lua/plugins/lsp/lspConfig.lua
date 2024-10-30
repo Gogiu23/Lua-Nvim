@@ -50,7 +50,7 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 		end
-		local servers = { "clangd", "ts_ls", "lua_ls" }
+		local servers = { "clangd", "ts_ls", "lua_ls", "kotlin_language_server" }
 		for _, lsp in ipairs(servers) do
 			lspconfig[lsp].setup({
 				capabilities = capabilities,
@@ -69,6 +69,14 @@ return {
 								callSnippet = "Replace",
 							},
 						},
+					},
+				})
+			end,
+			["clangd"] = function()
+				lspconfig["clangd"].setup({
+					capabilities = capabilities,
+					formatting = {
+						style = "file",
 					},
 				})
 			end,

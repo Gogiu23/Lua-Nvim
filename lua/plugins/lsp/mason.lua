@@ -1,10 +1,10 @@
 return {
 	"williamboman/mason.nvim",
-	cmd = "Mason",
-	build = ":MasonUpdate",
-	keys = {
-		{ "<leader>m", "<CMD>Mason<CR>" },
-	},
+	-- cmd = "Mason",
+	-- build = ":MasonUpdate",
+	-- keys = {
+	-- 	{ "<leader>m", "<CMD>Mason<CR>" },
+	-- },
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -39,6 +39,9 @@ return {
 				"isort",
 				"black",
 				"eslint_d",
+				"ktfmt",
+				"ktlint",
+				"clang-format",
 			},
 			run_on_start = true,
 		})

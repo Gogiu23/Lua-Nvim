@@ -11,6 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 require("config.options")
 require("config.autocmds")
 require("config.keymaps")
@@ -22,7 +25,7 @@ require("lazy").setup({
 	},
 	{
 		defaults = {
-			lazy = true,
+			lazy = false,
 		},
 		icons = {
 			require = "🌙",
@@ -55,7 +58,7 @@ require("lazy").setup({
 		},
 		install = {
 			colorscheme = {
-				'tokyonight',
+				"tokyonight",
 			},
 		},
 		checker = {
