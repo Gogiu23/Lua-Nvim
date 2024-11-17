@@ -1,7 +1,13 @@
 return {
 	{
-		'L3MON4D3/LuaSnip',
-		lazy = true
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -9,16 +15,21 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			'saadparwaiz1/cmp_luasnip',
-			"rafamadriz/friendly-snippets",
-			"onsails/lspkind.nvim"
+			"saadparwaiz1/cmp_luasnip",
+			"onsails/lspkind.nvim",
+			{ "jackieaskins/cmp-emmet", build = "npm run release" },
+			-- "mattn/emmet-vim",
+			-- "dcampos/cmp-emmet-vim",
+			-- "mlaursen/vim-react-snippets",
 		},
-		opts = function() 
+		---@param opts cmp.ConfigSchema
+		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			local lspkind = require("lspkind")
 			require("luasnip.loaders.from_vscode").lazy_load()
-			return {
+			-- require("vim-react-snippets").lazy_load()
+			cmp.setup({
 				completion = {
 					completeopt = "menu,menuone,preview,noselect",
 				},
@@ -28,23 +39,34 @@ return {
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
-					['<C-b>'] = cmp.mapping.scroll_docs(-4),
-					['<C-f>'] = cmp.mapping.scroll_docs(4),
-					['<C-Space>'] = cmp.mapping.complete(),
-					['<C-e>'] = cmp.mapping.abort(),
-					['<CR>'] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							if luasnip.expandable() then
-								luasnip.expand()
+					["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping({
+						i = function(fallback)
+							if cmp.visible() and cmp.get_active_entry() then
+								cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
 							else
-								cmp.confirm({
-									select = true,
-								})
+								fallback()
 							end
-						else
-							fallback()
-						end
-					end),
+						end,
+						s = cmp.mapping.confirm({ select = true }),
+						c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+					}),
+					-- ["<CR>"] = cmp.mapping(function(fallback)
+					-- 	if cmp.visible() then
+					-- 		if luasnip.expandable() then
+					-- 			luasnip.expand()
+					-- 		else
+					-- 			cmp.confirm({
+					-- 				select = true,
+					-- 			})
+					-- 		end
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end),
 
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
@@ -67,10 +89,12 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
-					{name = "nvim_lsp"},
-					{name = 'luasnip'},
-					{name = 'buffer'},
-					{name = 'path'},
+					{ name = "nvim_lsp" },
+					-- { name = "emmet_vim" },
+					{ name = "emmet" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
+					{ name = "path" },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
@@ -78,7 +102,7 @@ return {
 						ellipsis_char = "...",
 					}),
 				},
-			}
-		end
-	}
+			})
+		end,
+	},
 }

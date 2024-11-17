@@ -7,6 +7,7 @@ return {
 	},
 	config = function()
 		local configs = require("nvim-treesitter.configs")
+		local autotag = require("nvim-ts-autotag")
 		configs.setup({
 			ensure_installed = {
 				"bash",
@@ -19,7 +20,7 @@ return {
 				"json",
 				"jsonc",
 				"lua",
-				'graphql',
+				"graphql",
 				"xml",
 				"http",
 				"luadoc",
@@ -36,20 +37,27 @@ return {
 				"vimdoc",
 				"yaml",
 			},
-			sync_install = false,
+			sync_install = true,
 			highlight = {
 				enable = true,
 			},
-			autotag = {
-				enable = true,
-				enable_rename = true,
+			-- autotag = {
+			-- 	enable = true,
+			-- 	enable_rename = true,
+			-- 	enable_close = true,
+			-- 	enable_close_on_slash = true,
+			-- 	filetypes = {
+			-- 		"html",
+			-- 		"javascript",
+			-- 	},
+			-- 	skip_tags = {},
+			-- },
+		})
+		autotag.setup({
+			opts = {
 				enable_close = true,
+				enable_rename = true,
 				enable_close_on_slash = true,
-				filetypes = {
-					"html",
-					"javascript",
-				},
-				skip_tags = {},
 			},
 		})
 	end,

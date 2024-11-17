@@ -50,7 +50,7 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 		end
-		local servers = { "clangd", "ts_ls", "lua_ls", "kotlin_language_server" }
+		local servers = { "ts_ls", "kotlin_language_server" }
 		for _, lsp in ipairs(servers) do
 			lspconfig[lsp].setup({
 				capabilities = capabilities,
@@ -77,6 +77,29 @@ return {
 					capabilities = capabilities,
 					formatting = {
 						style = "file",
+					},
+				})
+			end,
+			["html"] = function()
+				lspconfig["html"].setup({
+					capabilities = capabilities,
+					filetypes = { "html", "javascript" },
+				})
+			end,
+			-- ["emmet_ls"] = function()
+			-- 	lspconfig["emmet_language_server"].setup({
+			-- 		capabilities = capabilities,
+			-- 		filetypes = { "html", "javascript", "javascriptreact" },
+			-- 	})
+			-- end,
+			["cssls"] = function()
+				lspconfig["cssls"].setup({
+					capabilities = capabilities,
+					filetypes = {
+						"css",
+						"html",
+						"javascript",
+						"javascriptreact",
 					},
 				})
 			end,
