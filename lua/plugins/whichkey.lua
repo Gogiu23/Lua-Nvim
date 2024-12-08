@@ -14,6 +14,8 @@ return {
 			{ "<leader>l", group = "Lazy", icon = { icon = "󰒲 ", color = "cyan" } },
 			{ "<leader>gl", group = "Lazygit", icon = { icon = "󰒲 ", color = "cyan" } },
 			{ "<leader>sg", group = "Google", icon = { icon = "󰊯 ", color = "yellow" } },
+			{ "<leader>sl", group = "LiveServer", icon = { icon = "", color = "yellow" } },
+			{ "<leader>sM", group = "Markdown Toggle", icon = { icon = "", color = "red" } },
 		},
 	},
 	config = function(_, opts)

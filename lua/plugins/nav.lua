@@ -9,6 +9,9 @@ return {
 				function()
 					require("nvim-tree.api").tree.toggle({
 						path = "cwd",
+						find_file = true,
+						update_root = true,
+						focus = true,
 					})
 				end,
 				desc = "Toggle Tree(cwd)",

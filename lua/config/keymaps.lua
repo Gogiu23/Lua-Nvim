@@ -26,6 +26,12 @@ map(N, "<leader>l", "<CMD>Lazy<CR>", opts)
 --Mason
 map(N, "<leader>m", "<CMD>Mason<CR>")
 
+--Live-server
+map(N, "<leader>sl", "<CMD>LiveServerStart<CR>", opts)
+
+--Markdown Preview
+map(N, "<leader>sm", "<CMD>MarkdownPreviewToggle<CR>", opts)
+
 --LSP
 map(N, "<leader>Li", "<CMD>LspInfo<CR>", { desc = "LSP Info" })
 
