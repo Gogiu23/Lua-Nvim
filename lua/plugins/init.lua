@@ -1,3 +1,4 @@
+local index = 0
 return {
 	{
 		"olrtg/nvim-emmet",
@@ -15,11 +16,32 @@ return {
 		"voldikss/vim-floaterm",
 		cmd = "FloatermToggle",
 		keys = {
-			{ "<C-/>", ":FloatermToggle<CR>", desc = "floaterm" },
+			{
+				--Command only activate When terminal is open or not
+				"<C-/>",
+				function()
+					if index == 0 then
+						index = index + 1
+						vim.cmd(":FloatermNew --cwd=<buffer>")
+					else
+						vim.cmd(":FloatermToggle")
+					end
+				end,
+				desc = "Floaterm toggle or new",
+			},
+			{
+				--LazyGit
+				"<leader>gl",
+				function()
+					vim.cmd(":FloatermNew --cwd=<buffer>")
+					vim.cmd("startinsert")
+					vim.fn.chansend(vim.b.terminal_job_id, "lazygit\n")
+				end,
+			},
 		},
 		config = function()
 			vim.cmd([[
-			tnoremap <C-n> <C-\><C-n>:FloatermNew<CR>
+			tnoremap <C-n> <C-\><C-n>:FloatermNew --cwd=<buffer><CR>
 			tnoremap <C-/> <C-\><C-n>:FloatermToggle<CR>
 			tnoremap <C-.> <C-\><C-n>:FloatermNext<CR>
 			tnoremap <C-,> <C-\><C-n>:FloatermPrev<CR>

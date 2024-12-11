@@ -5,13 +5,6 @@ local V = "v"
 local E = "jk"
 local opts = { remap = true, silent = true }
 
---LazyGit
-map(N, "<leader>gl", function()
-	vim.cmd(":FloatermToggle")
-	vim.cmd("startinsert")
-	vim.fn.chansend(vim.b.terminal_job_id, "lazygit\n")
-end, opts)
-
 --Formar on range
 map({ N, V }, "<leader>Fr", function()
 	require("conform").format({

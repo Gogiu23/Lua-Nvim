@@ -45,7 +45,11 @@ return {
 					},
 				},
 			},
-			pickers = {},
+			pickers = {
+				colorscheme = {
+					enable_preview = true,
+				},
+			},
 			extensions = {
 				xray23 = {
 					sessionDir = vim.fn.stdpath("data") .. "/vimSession",
@@ -138,6 +142,7 @@ return {
 		keymap(N, "<leader>fp", builtin.planets, { desc = "Planets" })
 		keymap(N, "<leader>r", builtin.oldfiles, { desc = "oldfiles" })
 		keymap(N, "<leader>fm", builtin.man_pages, { desc = "man pages" })
+		keymap(N, "<leader>ft", "<CMD>Telescope colorscheme<CR>", { desc = "Neovim Themes" })
 		--Buffers Telescope
 		keymap(N, "<leader>bb", builtin.buffers, { desc = "Buffers" })
 		keymap(N, "<leader>bf", builtin.current_buffer_fuzzy_find, { desc = "fz in the current buffer" })

@@ -6,7 +6,7 @@ return {
 		config = function()
 			require("tokyonight").setup({
 				transparent = true,
-				hide_inactive_statusline = true,
+				hide_inactive_statusline = false,
 				lualine_bold = true,
 			})
 			vim.cmd([[colorscheme tokyonight-moon]])
@@ -15,7 +15,7 @@ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
