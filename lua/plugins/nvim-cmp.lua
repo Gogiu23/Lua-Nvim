@@ -54,20 +54,6 @@ return {
 						s = cmp.mapping.confirm({ select = true }),
 						c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 					}),
-					-- ["<CR>"] = cmp.mapping(function(fallback)
-					-- 	if cmp.visible() then
-					-- 		if luasnip.expandable() then
-					-- 			luasnip.expand()
-					-- 		else
-					-- 			cmp.confirm({
-					-- 				select = true,
-					-- 			})
-					-- 		end
-					-- 	else
-					-- 		fallback()
-					-- 	end
-					-- end),
-
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
@@ -89,12 +75,11 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
+					{ name = "path" },
 					{ name = "nvim_lsp" },
-					-- { name = "emmet_vim" },
+					{ name = "buffer" },
 					{ name = "emmet" },
 					{ name = "luasnip" },
-					{ name = "buffer" },
-					{ name = "path" },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
