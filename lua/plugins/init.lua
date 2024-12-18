@@ -41,7 +41,7 @@ return {
 		},
 		config = function()
 			vim.cmd([[
-			tnoremap <C-n> <C-\><C-n>:FloatermNew --cwd=<buffer><CR>
+			tnoremap <C-n> <C-\><C-n>:FloatermNew<CR>
 			tnoremap <C-/> <C-\><C-n>:FloatermToggle<CR>
 			tnoremap <C-.> <C-\><C-n>:FloatermNext<CR>
 			tnoremap <C-,> <C-\><C-n>:FloatermPrev<CR>

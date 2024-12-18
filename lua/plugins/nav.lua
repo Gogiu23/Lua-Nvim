@@ -242,7 +242,7 @@ return {
 				filesystem_watchers = {
 					enable = true,
 					debounce_delay = 50,
-					ignore_dirs = {},
+					ignore_dirs = { "oil" },
 				},
 				actions = {
 					use_system_clipboard = true,
