@@ -85,12 +85,12 @@ return {
 					filetypes = { "html", "javascript" },
 				})
 			end,
-			-- ["emmet_ls"] = function()
-			-- 	lspconfig["emmet_language_server"].setup({
-			-- 		capabilities = capabilities,
-			-- 		filetypes = { "html", "javascript", "javascriptreact" },
-			-- 	})
-			-- end,
+			["emmet_language_server"] = function()
+				lspconfig["emmet_language_server"].setup({
+					capabilities = capabilities,
+					filetypes = { "html", "javascript", "javascriptreact" },
+				})
+			end,
 			["cssls"] = function()
 				lspconfig["cssls"].setup({
 					capabilities = capabilities,

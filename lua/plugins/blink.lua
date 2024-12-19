@@ -121,7 +121,7 @@ return {
 					-- Experimental auto-brackets support
 					auto_brackets = {
 						-- Whether to auto-insert brackets for functions
-						enabled = false,
+						enabled = true,
 						-- Default brackets to use for unknown languages
 						default_brackets = { "(", ")" },
 						-- Overrides the default blocked filetypes
