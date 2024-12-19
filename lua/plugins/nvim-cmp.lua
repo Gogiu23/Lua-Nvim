@@ -10,17 +10,18 @@ return {
 		},
 	},
 	{
-		"hrsh7th/nvim-cmp",
+		"iguanacucumber/magazine.nvim",
+		name = "nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
-			"hrsh7th/cmp-buffer",
+			{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+			{ "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+			{ "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+			{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind.nvim",
 			{ "jackieaskins/cmp-emmet", build = "npm run release" },
-			-- "mattn/emmet-vim",
-			-- "dcampos/cmp-emmet-vim",
-			-- "mlaursen/vim-react-snippets",
 		},
 		---@param opts cmp.ConfigSchema
 		config = function()
@@ -75,17 +76,30 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
-					{ name = "path" },
 					{ name = "nvim_lsp" },
-					{ name = "buffer" },
-					{ name = "emmet" },
 					{ name = "luasnip" },
+					{ name = "path" },
+				}, {
+					{ name = "buffer" },
 				}),
 				formatting = {
-					format = lspkind.cmp_format({
-						maxwidth = 50,
-						ellipsis_char = "...",
-					}),
+					format = function(entry, item)
+						local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+						item = lspkind.cmp_format({
+							mode = "symbol",
+							maxwidth = {
+								menu = 50,
+								abbr = 50,
+							},
+							ellipsis_char = "...",
+							show_labelDetails = true,
+						})(entry, item)
+						if color_item.abbr_hl_group then
+							item.kind_hl_group = color_item.abbr_hl_group
+							item.kind = color_item.abbr
+						end
+						return item
+					end,
 				},
 			})
 		end,

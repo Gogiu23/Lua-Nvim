@@ -9,7 +9,7 @@ return {
 				hide_inactive_statusline = false,
 				lualine_bold = true,
 			})
-			vim.cmd([[colorscheme tokyonight-moon]])
+			-- vim.cmd([[colorscheme tokyonight-moon]])
 		end,
 	},
 	{
@@ -30,7 +30,7 @@ return {
 					which_key = true,
 				},
 			})
-			-- vim.cmd([[colorscheme catppuccin-macchiato]])
+			vim.cmd([[colorscheme catppuccin-macchiato]])
 		end,
 	},
 }
