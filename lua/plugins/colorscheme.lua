@@ -30,7 +30,7 @@ return {
 					which_key = true,
 				},
 			})
-			-- vim.cmd([[colorscheme catppuccin-macchiato]])
+			vim.cmd([[colorscheme catppuccin]])
 		end,
 	},
 	{
@@ -107,7 +107,7 @@ return {
 				---@param palette Palette
 				colours_override = function(palette) end,
 			})
-			vim.cmd([[colorscheme everforest]])
+			-- vim.cmd([[colorscheme everforest]])
 		end,
 	},
 }

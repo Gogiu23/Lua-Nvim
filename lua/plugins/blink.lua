@@ -15,7 +15,7 @@ return {
 		---@type blink.cmp.Config
 		opts = {
 			keymap = {
-				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-d>"] = { "show", "show_documentation", "hide_documentation" },
 				["<C-e>"] = { "hide" },
 				["<C-y>"] = { "select_and_accept" },
 
@@ -61,7 +61,7 @@ return {
 					-- 'prefix' will fuzzy match on the text before the cursor
 					-- 'full' will fuzzy match on the text before *and* after the cursor
 					-- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
-					range = "prefix",
+					range = "full",
 					-- Regex used to get the text when fuzzy matching
 					regex = "[-_]\\|\\k",
 					-- After matching with regex, any characters matching this regex at the prefix will be excluded
@@ -78,7 +78,7 @@ return {
 					-- LSPs can indicate when to show the completion window via trigger characters
 					-- however, some LSPs (i.e. tsserver) return characters that would essentially
 					-- always show the window. We block these by default.
-					show_on_blocked_trigger_characters = { " ", "\n", "\t" },
+					show_on_blocked_trigger_characters = { "\n", "\t" },
 					-- When both this and show_on_trigger_character are true, will show the completion window
 					-- when the cursor comes after a trigger character after accepting an item
 					show_on_accept_on_trigger_character = true,
@@ -93,10 +93,10 @@ return {
 
 				list = {
 					-- Maximum number of items to display
-					max_items = 200,
+					max_items = 150,
 					-- Controls if completion items will be selected automatically,
 					-- and whether selection automatically inserts
-					selection = "auto_insert",
+					selection = "manual",
 					-- Controls how the completion items are selected
 					-- 'preselect' will automatically select the first item in the completion list
 					-- 'manual' will not select any item by default
@@ -142,16 +142,17 @@ return {
 				},
 
 				menu = {
+					order = { "n", "s" },
 					enabled = true,
 					min_width = 15,
 					max_height = 10,
-					border = "none",
+					border = "padded",
 					winblend = 0,
 					winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 					-- Keep the cursor X lines away from the top/bottom of the window
 					scrolloff = 2,
 					-- Note that the gutter will be disabled when border ~= 'none'
-					scrollbar = true,
+					scrollbar = false,
 					-- Which directions to show the window,
 					-- falling back to the next direction when there's not enough space
 					direction_priority = { "s", "n" },
@@ -168,12 +169,12 @@ return {
 						-- Gap between columns
 						gap = 1,
 						-- Use treesitter to highlight the label text
-						treesitter = false,
+						treesitter = true,
 
 						-- Components to render, grouped by column
-						columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } },
+						-- columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } },
 						-- for a setup similar to nvim-cmp: https://github.com/Saghen/blink.cmp/pull/245#issuecomment-2463659508
-						-- columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+						columns = { { "label", "label_description", gap = 1 }, { "kind_icon" } },
 
 						-- Definitions for possible components to render. Each component defines:
 						--   ellipsis: whether to add an ellipsis when truncating the text
@@ -236,7 +237,7 @@ return {
 							},
 
 							label_description = {
-								width = { max = 30 },
+								width = { max = 3 },
 								text = function(ctx)
 									return ctx.label_description
 								end,
@@ -268,11 +269,11 @@ return {
 						min_width = 10,
 						max_width = 60,
 						max_height = 20,
-						border = "padded",
+						border = "none",
 						winblend = 0,
 						winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
 						-- Note that the gutter will be disabled when border ~= 'none'
-						scrollbar = true,
+						scrollbar = false,
 						-- Which directions to show the documentation window,
 						-- for each of the possible menu window directions,
 						-- falling back to the next direction when there's not enough space
