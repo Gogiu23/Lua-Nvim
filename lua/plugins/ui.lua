@@ -11,7 +11,7 @@ return {
 			return {
 				barbar.setup({
 					insert_at_end = true,
-				})
+				}),
 			}
 		end,
 		opts = {},
@@ -60,7 +60,7 @@ return {
 				options = {
 					globalstatus = true,
 					icons_enabled = true,
-					theme = "tokyonight",
+					theme = "auto",
 					section_separators = { left = "", right = "" },
 					-- component_separators = { left = '', right = '' },
 					-- component_separators = { left = '', right = ''},
