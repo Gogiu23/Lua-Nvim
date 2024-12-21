@@ -35,6 +35,7 @@ return {
 			tnoremap <C-.> <C-\><C-n>:FloatermNext<CR>
 			tnoremap <C-,> <C-\><C-n>:FloatermPrev<CR>
 			tnoremap <C-c> <C-\><C-n>:FloatermKill!<CR>
+            tnoremap <esc><esc> <C-\><C-n>
 			]])
 			vim.cmd([[
 			let g:floaterm_title = 'GiuliTerm ($1)'
