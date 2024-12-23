@@ -88,16 +88,16 @@ map(N, "<leader>sg", search, { desc = "search Google" })
 map(N, "<leader>sc", chatgpt, { desc = "search chatgpt" })
 
 --create ternminal at the bottom
-map(N, "<leader>Ts", function()
-	local chan_id = 0
-	chan_id = vim.b.terminal_job_id
-
-	vim.cmd.vnew()
-	vim.cmd.terminal()
-	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 10)
-	vim.cmd("startinsert")
-	-- Limpiar la pantalla
-	vim.api.nvim_chan_send(chan_id, "clear\n")
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-l>", true, false, true), "n", true)
-end)
+-- map(N, "<leader>Ts", function()
+-- 	local chan_id = 0
+-- 	chan_id = vim.b.terminal_job_id
+--
+-- 	vim.cmd.vnew()
+-- 	vim.cmd.terminal()
+-- 	vim.cmd.wincmd("J")
+-- 	vim.api.nvim_win_set_height(0, 10)
+-- 	vim.cmd("startinsert")
+-- 	-- Limpiar la pantalla
+-- 	vim.api.nvim_chan_send(chan_id, "clear\n")
+-- 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-l>", true, false, true), "n", true)
+-- end)

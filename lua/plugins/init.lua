@@ -19,6 +19,20 @@ return {
 				desc = "Floaterm toggle or new",
 			},
 			{
+				"<leader>Ts",
+				function()
+					local termBottom = ":FloatermNew --wintype=split --position=bottom --height=0.3 --cwd=<buffer>"
+					local termToggleBottom = ":FloatermToggle --wintype=split --position=bottom --height=0.3"
+					if index == 0 then
+						index = index + 1
+						vim.cmd(termBottom)
+					else
+						vim.cmd(termToggleBottom)
+					end
+				end,
+				desc = "Split terminal to the bottom",
+			},
+			{
 				--LazyGit
 				"<leader>gl",
 				function()
@@ -29,6 +43,16 @@ return {
 			},
 		},
 		config = function()
+			local floaterm = [[
+			let g:floaterm_title = 'GiuliTerm ($1)'
+			let g:floaterm_height = 0.9
+			let g:floaterm_width = 0.8
+			let g:floaterm_titleposition = 'center'
+			"highlights
+			hi Floaterm guibg=#191e2a
+			hi FloatermBorder guibg=#191e2a guifg=#ffcc66
+
+          ]]
 			vim.cmd([[
 			tnoremap <C-n> <C-\><C-n>:FloatermNew<CR>
 			tnoremap <C-/> <C-\><C-n>:FloatermToggle<CR>
@@ -37,15 +61,7 @@ return {
 			tnoremap <C-c> <C-\><C-n>:FloatermKill!<CR>
             tnoremap <esc><esc> <C-\><C-n>
 			]])
-			vim.cmd([[
-			let g:floaterm_title = 'GiuliTerm ($1)'
-			let g:floaterm_height = 0.9
-			let g:floaterm_width = 0.8
-			let g:floaterm_titleposition = 'center'
-			"highlights
-			hi Floaterm guibg=#191e2a
-			hi FloatermBorder guibg=#191e2a guifg=#ffcc66
-			]])
+			vim.cmd(floaterm)
 		end,
 	},
 	--Dressing library
