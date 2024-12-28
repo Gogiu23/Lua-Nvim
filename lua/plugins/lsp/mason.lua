@@ -38,7 +38,7 @@ return {
 				"stylua",
 				"isort",
 				"black",
-				"eslint_d",
+				{ "eslint_d", version = "13.1.2" },
 				"ktfmt",
 				"ktlint",
 				"clang-format",
