@@ -1,6 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
+	version = "*",
 	cmd = "Telescope",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
@@ -15,49 +15,53 @@ return {
 		},
 	},
 	config = function()
+		-- ✅ Shim de compatibilidad para Neovim 0.12
+		if not vim.treesitter.language.ft_to_lang then
+			vim.treesitter.language.ft_to_lang = function(ft)
+				return vim.treesitter.language.get_lang(ft) or ft
+			end
+		end
+
+		-- ✅ vim.loop fue deprecado en 0.10+, usar vim.uv
+		local uv = vim.uv or vim.loop
+
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 		local fb_actions = require("telescope._extensions.file_browser.actions")
+
 		telescope.setup({
 			defaults = {
 				theme = "center",
 				border = true,
 				sorting_strategy = "ascending",
-				path_display = {
-					tail = {},
-				},
+				path_display = { tail = {} },
 				layout_strategy = "flex",
-				layout_config = {
-					prompt_position = "top",
-				},
-				prompt_prefix = "  ",
-				selection_caret = " ",
+				layout_config = { prompt_position = "top" },
+				prompt_prefix = "  ",
+				selection_caret = " ",
 				initial_mode = "normal",
 				file_ignore_patterns = { "node_modules" },
 				color_devicons = true,
 				mappings = {
 					n = {
-						["q"] = require("telescope.actions").close,
+						["q"] = actions.close,
 						["<up>"] = false,
-						["<Down"] = false,
 						["<Up>"] = actions.cycle_history_prev,
 						["<Down>"] = actions.cycle_history_next,
 					},
 				},
 			},
 			pickers = {
-				colorscheme = {
-					enable_preview = true,
-				},
+				colorscheme = { enable_preview = true },
 			},
 			extensions = {
-				xray23 = {
-					sessionDir = vim.fn.stdpath("data") .. "/vimSession",
-				},
+				-- xray23 = {
+				-- 	sessionDir = vim.fn.stdpath("data") .. "/vimSession",
+				-- },
 				file_browser = {
 					theme = "ivy",
-					path = vim.loop.cwd(),
-					cwd = vim.loop.cwd(),
+					path = uv.cwd(), -- ✅ vim.uv en lugar de vim.loop
+					cwd = uv.cwd(), -- ✅
 					cwd_to_path = true,
 					grouped = true,
 					files = true,
@@ -75,7 +79,7 @@ return {
 					collapse_dirs = false,
 					prompt_path = false,
 					quiet = false,
-					dir_icon = "",
+					dir_icon = "",
 					dir_icon_hl = "Default",
 					display_stat = { date = true, size = true, mode = true },
 					hijack_netrw = true,
@@ -107,34 +111,27 @@ return {
 				},
 			},
 		})
-		--Telescope Prompt
+
+		-- Highlights
 		local TelescopePrompt = {
-			TelescopePromptTitle = {
-				bg = "#40E0D0",
-			},
-			TelescopePromptNormal = {
-				bg = "#212F3D",
-			},
-			TelescopePromptBorder = {
-				fg = "#212F3D",
-				bg = "#212F3D",
-			},
-			TelescopePromptCounter = {
-				bg = "#212F3D",
-			},
-			TelescopePromptPrefix = {
-				bg = "#212F3D",
-			},
+			TelescopePromptTitle = { bg = "#40E0D0" },
+			TelescopePromptNormal = { bg = "#212F3D" },
+			TelescopePromptBorder = { fg = "#212F3D", bg = "#212F3D" },
+			TelescopePromptCounter = { bg = "#212F3D" },
+			TelescopePromptPrefix = { bg = "#212F3D" },
 		}
 		for hl, col in pairs(TelescopePrompt) do
 			vim.api.nvim_set_hl(0, hl, col)
 		end
+
 		telescope.load_extension("file_browser")
 		telescope.load_extension("fzf")
 		telescope.load_extension("xray23")
+
 		local keymap = vim.keymap.set
 		local builtin = require("telescope.builtin")
 		local N = "n"
+
 		keymap(N, "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "find files" })
 		keymap(N, "<leader>fc", "<CMD>Telescope file_browser path=%:p:h<CR>", { desc = "File browser" })
 		keymap(N, "<leader>fz", "<cmd>Telescope live_grep<cr>", { desc = "live grep in cwd" })
@@ -143,15 +140,12 @@ return {
 		keymap(N, "<leader>r", builtin.oldfiles, { desc = "oldfiles" })
 		keymap(N, "<leader>fm", builtin.man_pages, { desc = "man pages" })
 		keymap(N, "<leader>ft", "<CMD>Telescope colorscheme<CR>", { desc = "Neovim Themes" })
-		--Buffers Telescope
 		keymap(N, "<leader>bb", builtin.buffers, { desc = "Buffers" })
 		keymap(N, "<leader>bf", builtin.current_buffer_fuzzy_find, { desc = "fz in the current buffer" })
 		keymap(N, "<leader>bt", builtin.current_buffer_tags, { desc = "fz tags in current buffer" })
-		--Help Telescope
 		keymap(N, "<leader>ht", builtin.help_tags, { desc = "tags_helps" })
 		keymap(N, "<leader>hi", builtin.command_history, { desc = "command history" })
 		keymap(N, "<leader>hh", builtin.highlights, { desc = "Highlights" })
-		--Git Telescope
 		keymap(N, "<leader>gc", builtin.git_commits, { desc = "Git Commits" })
 		keymap(N, "<leader>gb", builtin.git_bcommits, { desc = "Git Buffers" })
 		keymap(N, "<leader>gr", builtin.git_branches, { desc = "Git branches" })

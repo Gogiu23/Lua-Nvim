@@ -1,15 +1,9 @@
 return {
 	{
 		"saghen/blink.cmp",
-		-- optional: provides snippets for the snippet source
 		dependencies = "rafamadriz/friendly-snippets",
 
-		-- use a release tag to download pre-built binaries
-		version = "v0.*",
-		-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-		-- build = 'cargo build --release',
-		-- If you use nix, you can build from source using latest nightly rust with:
-		-- build = 'nix run .#build-plugin',
+		version = "1.*",
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -33,19 +27,7 @@ return {
 				["<Tab>"] = { "select_next", "fallback" },
 				["<S-Tab>"] = { "select_prev", "fallback" },
 			},
-			completion = {
-				trigger = {
-					prefetch_on_insert = true,
-					show_in_snippet = true,
-				},
-				list = {
-					selection = "auto_insert",
-				},
-				documentation = {
-					auto_show = true,
-					auto_show_delay_ms = 200,
-				},
-			},
+			completion = {},
 		},
 	},
 }
