@@ -1,8 +1,9 @@
 return {
 	"folke/which-key.nvim",
-	event = { "BufreadPre", "BufNewFile" },
+	event = { "VeryLazy" },
 	opts_extend = { "spec" },
 	opts = {
+		preset = "helix",
 		defaults = {},
 		spec = {
 			mode = { "n", "v" },

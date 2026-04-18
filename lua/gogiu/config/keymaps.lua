@@ -5,6 +5,7 @@ local V = "v"
 local E = "jk"
 local opts = { remap = true, silent = true }
 
+vim.g.mapleader = " "
 --Formar on range
 map({ N, V }, "<leader>Fr", function()
 	require("conform").format({

@@ -6,10 +6,12 @@ return {
 				return "VimEnter"
 			end
 		end,
+		keys = {
+			{ "<leader>d", "<cmd>dashboard<cr>", desc = "Dashboard" },
+		},
 		cmd = "Dashboard",
 		config = function()
 			local dash = require("dashboard")
-			local map = vim.keymap.set
 			local logo = [[
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- ~ ██████╗  ██████╗  ██████╗ ██╗██╗   ██╗~
@@ -22,7 +24,6 @@ return {
 			]]
 			logo = string.rep("\n", 8) .. logo .. "\n\n"
 
-			map("n", "<leader>d", "<CMD>Dashboard<CR>")
 			vim.opt_global.showtabline = 2
 
 			dash.setup({
@@ -41,7 +42,7 @@ return {
 							icon_hl = "@variable",
 							desc = "Find Files",
 							group = "Label",
-							action = "Telescope find_files",
+							action = "Telescope file_browser",
 							key = "f",
 						},
 						{
@@ -54,12 +55,6 @@ return {
 							desc = "󰆓 Saved Sessions",
 							action = "Telescope xray23 list",
 							key = "s",
-						},
-						{
-							desc = "  Browse Files ",
-							group = "DiagnosticHint",
-							action = "Telescope file_browser",
-							key = "a",
 						},
 						{
 							desc = "󰒲  Lazy ",
@@ -90,13 +85,6 @@ return {
 							key = "q",
 						},
 					},
-					footer = function()
-						local stats = require("lazy").stats()
-						local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-						return {
-							"🎱 Loaded " .. stats.loaded .. "/" .. stats.count .. " Plugins in " .. ms .. "ms",
-						}
-					end,
 				},
 			})
 		end,

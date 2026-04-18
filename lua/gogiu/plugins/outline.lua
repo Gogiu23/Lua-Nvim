@@ -6,7 +6,7 @@ return {
 		{ "<leader>ao", "<CMD>Outline<CR>", desc = "Toggle Outline" },
 	},
 	config = function()
-		require("outline").setup({
+		require("plugins.outline").setup({
 			outline_window = {
 				-- Where to open the split window: right/left
 				position = "right",

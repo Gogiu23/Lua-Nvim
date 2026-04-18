@@ -22,6 +22,13 @@ return {
 		"nvim-lualine/lualine.nvim",
 		event = { "BufreadPre", "BufNewFile" },
 		config = function()
+			local function macro_recording()
+				local reg = vim.fn.reg_recording()
+				if reg == "" then
+					return ""
+				end
+				return " @" .. reg .. " recording"
+			end
 			local option = vim.opt
 			option.showtabline = 2
 
@@ -119,6 +126,10 @@ return {
 						},
 					},
 					lualine_y = {
+						{
+							macro_recording,
+							color = { fg = "#ff9e64", gui = "bold" },
+						},
 						{
 							"progress",
 							icon = "",
