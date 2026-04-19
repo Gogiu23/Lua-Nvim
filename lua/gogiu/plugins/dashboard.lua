@@ -7,7 +7,7 @@ return {
 			end
 		end,
 		keys = {
-			{ "<leader>d", "<cmd>dashboard<cr>", desc = "Dashboard" },
+			{ "<leader>d", "<cmd>Dashboard<cr>", desc = "Dashboard " },
 		},
 		cmd = "Dashboard",
 		config = function()

@@ -1,36 +1,15 @@
 return {
 	{
-		"mason-org/mason-lspconfig.nvim",
+		"mason-org/mason.nvim",
 		opts = {
-			-- list of servers for mason to install
-			ensure_installed = {
-				"ts_ls",
-				"html",
-				"cssls",
-				"tailwindcss",
-				"svelte",
-				"lua_ls",
-				"graphql",
-				"emmet_ls",
-				"prismals",
-				"pyright",
-				"eslint",
-			},
-		},
-		dependencies = {
-			{
-				"mason-org/mason.nvim",
-				opts = {
-					ui = {
-						icons = {
-							package_installed = "✓",
-							package_pending = "➜",
-							package_uninstalled = "✗",
-						},
-					},
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
 				},
 			},
-			"neovim/nvim-lspconfig",
 		},
 	},
+	"neovim/nvim-lspconfig",
 }

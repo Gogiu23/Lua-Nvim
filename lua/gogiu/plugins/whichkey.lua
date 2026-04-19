@@ -18,6 +18,7 @@ return {
 			{ "<leader>sl", group = "LiveServer", icon = { icon = "", color = "yellow" } },
 			{ "<leader>sM", group = "Markdown Toggle", icon = { icon = "", color = "red" } },
 		},
+		sort = { "alphanum" },
 	},
 	config = function(_, opts)
 		local wk = require("which-key")

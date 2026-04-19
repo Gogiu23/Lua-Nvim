@@ -9,18 +9,23 @@ return {
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 			bigfile = { enabled = true },
-			dashboard = { enabled = false },
+			dashboard = {
+				enabled = false,
+			},
 			explorer = {
 				enabled = true,
 				replace_netrw = true,
 			},
-			indent = { enabled = true },
+			indent = { enabled = false },
 			input = { enabled = true },
 			picker = {
 				enabled = true,
 				sources = {
 					explorer = {
 						auto_close = true,
+						jump = {
+							close = true,
+						},
 					},
 				},
 			},
@@ -38,6 +43,13 @@ return {
 					Snacks.picker.explorer()
 				end,
 				desc = "File explorer",
+			},
+			{
+				"<leader>p",
+				function()
+					Snacks.picker()
+				end,
+				desc = "Show Pickers  ",
 			},
 		},
 	},

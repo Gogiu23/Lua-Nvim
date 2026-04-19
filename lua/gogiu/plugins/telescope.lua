@@ -98,6 +98,7 @@ return {
 		keymap(N, "<leader>fr", builtin.oldfiles, { desc = "Recent files" })
 		keymap(N, "<leader>fm", builtin.man_pages, { desc = "Man pages" })
 		keymap(N, "<leader>ft", "<CMD>Telescope colorscheme<CR>", { desc = "Themes" })
+		keymap(N, "<leader>D", "<cmd>Telescope diagnostics<cr>", { desc = "Diagnostics" })
 		-- Buffers
 		keymap(N, "<leader>bb", builtin.buffers, { desc = "Buffers" })
 		keymap(N, "<leader>bf", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in buffer" })

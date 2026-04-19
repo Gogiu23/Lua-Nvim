@@ -2,13 +2,10 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		dependencies = {
-			"rcarriga/nvim-notify",
-		},
 		opts = {
 			lsp = {
 				hover = {
-					enabled = false,
+					enabled = true,
 				},
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -30,10 +27,14 @@ return {
 				},
 			},
 			presets = {
-				bottom_search = true,
+				bottom_search = false,
 				command_palette = true,
 				long_message_to_split = true,
 			},
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
 		},
 		-- stylua: ignore
 		keys = {
