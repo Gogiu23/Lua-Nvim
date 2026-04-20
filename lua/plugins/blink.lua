@@ -29,7 +29,7 @@ return {
 			completion = {
 				list = {
 					selection = {
-						preselect = true, -- ✅ preselecciona el primer item
+						preselect = false, -- ✅ preselecciona el primer item
 						auto_insert = false, -- ✅ no inserta hasta que aceptes
 					},
 				},
@@ -39,7 +39,7 @@ return {
 							kind_icon = {
 								text = function(ctx)
 									if ctx.source_name ~= "Path" then
-										return require("lspkind").symbol_map[ctx.kind] or "" .. ctx.icon_gap
+										return require("lspkind").symbol_map[ctx.kind] or ("" .. ctx.icon_gap)
 									end
 
 									local is_unknown_type = vim.tbl_contains(
@@ -79,7 +79,16 @@ return {
 				},
 			},
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				-- add lazydev to your completion providers
+				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						-- make lazydev completions top priority (see `:h blink.cmp`)
+						score_offset = 100,
+					},
+				},
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},

@@ -11,6 +11,21 @@ local root_markers2 = {
 	"selene.yml",
 }
 
+-- lsp/lua_ls.lua
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			workspace = {
+				checkThirdParty = false,
+			},
+			diagnostics = {
+				globals = { "vim", "Snacks" }, -- ✅ silencia "Undefined global Snacks"
+			},
+			completion = { callSnippet = "Replace" },
+		},
+	},
+})
+
 ---@type vim.lsp.Config
 return {
 	cmd = { "lua-language-server" },

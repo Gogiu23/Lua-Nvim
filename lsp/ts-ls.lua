@@ -60,7 +60,7 @@ return {
 	commands = {
 		["editor.action.showReferences"] = function(command, ctx)
 			local client = assert(vim.lsp.get_client_by_id(ctx.client_id))
-			local file_uri, position, references = unpack(command.arguments)
+			local file_uri, position, references = table.unpack(command.arguments)
 
 			local quickfix_items = vim.lsp.util.locations_to_items(references --[[@as any]], client.offset_encoding)
 			vim.fn.setqflist({}, " ", {
