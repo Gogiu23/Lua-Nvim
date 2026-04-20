@@ -8,23 +8,18 @@ return {
 				"<leader>sr",
 				function()
 					local grug = require("grug-far")
-					local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-					grug.grug_far({
-						transient = true,
-						prefills = {
-							filesFilter = ext and ext ~= "" and "*." .. ext or nil,
-						},
-					})
+					grug.open({ prefills = { paths = vim.fn.expand("%") } })
 				end,
 				mode = { "n", "x" },
-				desc = "Search and Replace",
+				desc = "Search and Replace in File ",
+			},
+			{
+				"<leader>bc",
+				"<cmd>bd<cr>",
+				desc = "Close buffer",
 			},
 		},
 	},
-
-	-- Flash enhances the built-in search functionality by showing labels
-	-- at the end of each match, letting you quickly jump to a specific
-	-- location.
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",

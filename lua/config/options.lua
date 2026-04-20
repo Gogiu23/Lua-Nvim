@@ -1,4 +1,6 @@
 local opt = vim.opt
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.autoformat = true
 -- tabs & indentation
 opt.tabstop = 2 -- 2 spaces for tabs (prettier default)

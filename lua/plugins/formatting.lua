@@ -18,9 +18,9 @@ return {
 				kotlin = { "ktfmt" },
 			},
 			format_on_save = {
-				lsp_fallback = true,
+				lsp_format = "fallback",
 				async = false,
-				timeout_ms = 1000,
+				timeout_ms = 500,
 			},
 		})
 	end,
