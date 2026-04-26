@@ -20,7 +20,7 @@ return {
 				["<C-f>"] = { "scroll_documentation_down", "fallback" },
 				["<C-j>"] = { "snippet_forward", "fallback" },
 				["<C-k>"] = { "snippet_backward", "fallback" },
-				["<CR>"] = { "select_and_accept", "fallback" },
+				["<CR>"] = { "accept", "fallback" },
 				["<Up>"] = { "select_prev", "fallback" },
 				["<Down>"] = { "select_next", "fallback" },
 				["<Tab>"] = { "select_next", "fallback" },
@@ -33,7 +33,13 @@ return {
 						auto_insert = false, -- ✅ no inserta hasta que aceptes
 					},
 				},
+				accept = {
+					auto_brackets = {
+						enabled = false,
+					},
+				},
 				menu = {
+					border = "rounded",
 					draw = {
 						components = {
 							kind_icon = {
@@ -74,6 +80,7 @@ return {
 					},
 				},
 				documentation = {
+					window = { border = "rounded" },
 					auto_show = true,
 					auto_show_delay_ms = 200,
 				},
