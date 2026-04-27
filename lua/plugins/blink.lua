@@ -5,7 +5,7 @@ return {
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
 		},
-		version = "1.*",
+		version = "*",
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
@@ -87,7 +87,7 @@ return {
 			},
 			sources = {
 				-- add lazydev to your completion providers
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "snippets", "buffer" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",

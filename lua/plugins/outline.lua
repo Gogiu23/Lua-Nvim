@@ -3,10 +3,10 @@ return {
 	lazy = true,
 	cmd = { "Outline", "OutlineOpen" },
 	keys = {
-		{ "<leader>ao", "<CMD>Outline<CR>", desc = "Toggle Outline" },
+		{ "<leader>ao", "<cmd>Outline<CR>", desc = "Toggle Outline" },
 	},
 	config = function()
-		require("plugins.outline").setup({
+		require("outline").setup({
 			outline_window = {
 				-- Where to open the split window: right/left
 				position = "right",
@@ -29,7 +29,7 @@ return {
 
 				-- Auto close the outline window if goto_location is triggered and not for
 				-- peek_location
-				auto_close = false,
+				auto_close = true,
 				-- Automatically scroll to the location in code when navigating outline window.
 				auto_jump = false,
 				-- boolean or integer for milliseconds duration to apply a temporary highlight
@@ -128,7 +128,7 @@ return {
 
 			preview_window = {
 				-- Automatically open preview of code location when navigating outline window
-				auto_preview = false,
+				auto_preview = true,
 				-- Automatically open hover_symbol when opening preview (see keymaps for
 				-- hover_symbol).
 				-- If you disable this you can still open hover_symbol using your keymap
