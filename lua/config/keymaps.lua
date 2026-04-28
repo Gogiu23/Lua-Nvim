@@ -86,28 +86,3 @@ end
 
 map(N, "<leader>sg", search, { desc = "search Google" })
 map(N, "<leader>sc", chatgpt, { desc = "search chatgpt" })
-
---OIL KEYMAPS
-local oil_is_open = false
-local Snacks = require("snacks")
-
---select entry under the cursor oil
-map(N, "<CR>", function()
-	require("oil").select(nil, function()
-		Snacks.dim.disable()
-		oil_is_open = false
-	end)
-end, nil)
-
-vim.keymap.set("n", "-", function()
-	if oil_is_open then
-		oil_is_open = false
-		Snacks.dim.disable()
-		require("oil").close()
-	else
-		oil_is_open = true
-		require("oil").open_float(nil, { preview = { vertical = true } }, function()
-			Snacks.dim()
-		end)
-	end
-end, { desc = "Toggle oil float" })

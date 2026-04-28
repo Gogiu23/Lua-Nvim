@@ -2,26 +2,16 @@ return {
 	--Oil nvim
 	{
 		"stevearc/oil.nvim",
-		-- keys = {
-		-- 	{
-		-- 		"-",
-		-- 		function()
-		-- 			local oil_open = false
-		-- 			local Snack = require("snacks")
-		-- 			if oil_open then
-		-- 				oil_open = false
-		-- 				Snack.dim.disable()
-		-- 				require("oil").close()
-		-- 			else
-		-- 				oil_open = true
-		-- 				require("oil").open_float(nil, nil, function()
-		-- 					Snack.dim()
-		-- 				end)
-		-- 			end
-		-- 		end,
-		-- 		desc = " Toggle Oil Explorer",
-		-- 	},
-		-- },
+		lazy = false,
+		keys = {
+			{
+				"-",
+				function()
+					require("oil").open_float(nil, { preview = { vertical = true } }, nil)
+				end,
+				desc = "Toggle Oil Explorer",
+			},
+		},
 		event = function()
 			if vim.fn.argc() == 1 then
 				return "ColorScheme"
@@ -51,16 +41,15 @@ return {
 					["<C-p>"] = "actions.preview",
 					["<C-v>"] = "actions.select_vsplit",
 					["<C-x>"] = "actions.select_split",
-					["<BS>"] = { "actions.parent", mode = "n" },
-					-- ["C-c"] = { "actions.close", mode = "n" },
+					["C-c"] = { "actions.close", mode = "n" },
 					["g."] = { "actions.toggle_hidden", mode = "n" },
 				},
-				use_default_keymaps = false,
+				use_default_keymaps = true,
 				float = {
-					padding = 7,
+					padding = 4,
 					border = "rounded",
 					win_options = {
-						winblend = 10,
+						winblend = 7,
 						winhighlight = "Normal:Normal,NormalFloat:NormalFloat",
 					},
 				},

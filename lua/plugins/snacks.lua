@@ -16,6 +16,7 @@ return {
 			explorer = {
 				enabled = true,
 				replace_netrw = true,
+				trash = true,
 			},
 			indent = { enabled = false },
 			input = { enabled = true },
@@ -41,9 +42,11 @@ return {
 			{
 				"<leader>e",
 				function()
-					Snacks.picker.explorer()
+					Snacks.picker.explorer({
+						cwd = vim.fn.expand("%:p:h"),
+					})
 				end,
-				desc = "File explorer",
+				desc = "File explorer in CWD",
 			},
 			{
 				"<leader>p",

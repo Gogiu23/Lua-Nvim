@@ -3,6 +3,9 @@ return {
 	build = "npm add -g live-server",
 	cmd = { "LiveServerStart", "LiveServerStop" },
 	config = function()
-		require("live-server").setup()
+		vim.g.live_server = {
+			port = 8080,
+			browser = true,
+		}
 	end,
 }

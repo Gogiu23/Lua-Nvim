@@ -8,7 +8,8 @@
 	],
     "diagnostics.globals": [
         "vim",
-        "session_filename_to_dir"
+        "session_filename_to_dir",
+        "Snacks"
     ],
     "completion.autoRequire": false
 }
