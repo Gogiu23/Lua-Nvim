@@ -34,18 +34,18 @@ return {
 
 			local custom_fname = require("lualine.components.filename"):extend()
 			local highlight = require("lualine.highlight")
-			local default_status_colors = { saved = "#239B56", modified = "#922B21" }
+			local default_status_colors = { saved = "#56B6C6", modified = "tomato" }
 
 			function custom_fname:init(options)
 				custom_fname.super.init(self, options)
 				self.status_colors = {
 					saved = highlight.create_component_highlight_group(
-						{ fg = default_status_colors.saved },
+						{ bg = default_status_colors.saved },
 						"filename_status_saved",
 						self.options
 					),
 					modified = highlight.create_component_highlight_group(
-						{ fg = default_status_colors.modified },
+						{ bg = default_status_colors.modified },
 						"filename_status_modified",
 						self.options
 					),
@@ -67,12 +67,12 @@ return {
 				options = {
 					globalstatus = true,
 					icons_enabled = true,
-					theme = "auto",
-					section_separators = { left = "", right = "" },
-					-- component_separators = { left = '', right = '' },
+					theme = "OceanicNext",
+					section_separators = { left = "", right = "" },
+					-- component_separators = { left = "", right = "" },
 					-- component_separators = { left = '', right = ''},
-					component_separators = { left = "|", right = "󱋱" },
-					-- section_separators = { left = '', right = ''},
+					-- component_separators = { left = "|", right = "󱋱" },
+					-- section_separators = { left = "", right = "" },
 					disabled_filetypes = {
 						statusline = { "dashboard" },
 						-- tabline = { "dasboard" },
