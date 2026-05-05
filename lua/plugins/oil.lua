@@ -24,6 +24,7 @@ return {
 			local detail = false
 
 			require("oil").setup({
+				delete_to_trash = true,
 				keymaps = {
 					["gd"] = {
 						desc = "Toggle file detail view",

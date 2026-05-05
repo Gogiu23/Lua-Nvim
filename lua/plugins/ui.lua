@@ -34,18 +34,18 @@ return {
 
 			local custom_fname = require("lualine.components.filename"):extend()
 			local highlight = require("lualine.highlight")
-			local default_status_colors = { saved = "#56B6C6", modified = "tomato" }
+			local default_status_colors = { saved = "#AAFFC7", modified = "tomato" }
 
 			function custom_fname:init(options)
 				custom_fname.super.init(self, options)
 				self.status_colors = {
 					saved = highlight.create_component_highlight_group(
-						{ bg = default_status_colors.saved },
+						{ bg = default_status_colors.saved, fg = "black", gui = "bold" },
 						"filename_status_saved",
 						self.options
 					),
 					modified = highlight.create_component_highlight_group(
-						{ bg = default_status_colors.modified },
+						{ bg = default_status_colors.modified, gui = "bold" },
 						"filename_status_modified",
 						self.options
 					),
@@ -57,9 +57,10 @@ return {
 
 			function custom_fname:update_status()
 				local data = custom_fname.super.update_status(self)
+				local icon = vim.bo.modified and "" or " 󰆓 "
 				data = highlight.component_format_highlight(
 					vim.bo.modified and self.status_colors.modified or self.status_colors.saved
-				) .. data
+				) .. data .. icon
 				return data
 			end
 

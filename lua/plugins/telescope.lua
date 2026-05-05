@@ -6,6 +6,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
+		"HUAHUAI23/telescope-session.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -23,6 +24,11 @@ return {
 		local actions = require("telescope.actions")
 
 		telescope.setup({
+			extensions = {
+				xray = {
+					sessionDir = "/path/to/session-file",
+				},
+			},
 			defaults = {
 				-- Layout
 				sorting_strategy = "ascending",
@@ -84,6 +90,7 @@ return {
 		-- Extensions
 		telescope.load_extension("fzf")
 		telescope.load_extension("file_browser")
+		telescope.load_extension("xray23")
 
 		-- Keymaps
 		local keymap = vim.keymap.set

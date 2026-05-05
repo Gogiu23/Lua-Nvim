@@ -4,7 +4,8 @@
       "undefined-doc-name",
 		"different-requires",
 		"autoRequire",
-		"required"
+		"required",
+        "undefined-doc-param"
 	],
     "diagnostics.globals": [
         "vim",
