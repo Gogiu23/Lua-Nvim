@@ -3,7 +3,7 @@ return {
 	--Floatterm
 	{
 		"voldikss/vim-floaterm",
-		cmd = "FloatermToggle",
+		-- cmd = "FloatermToggle",
 		keys = {
 			{
 				--Command only activate When terminal is open or not
