@@ -39,7 +39,7 @@ map(N, "<leader>tr", "<CMD>read ~/templateHtml/index.html<CR>", { desc = "templa
 --Moving between buffers and delete ones
 map(N, "<C-.>", "<cmd>bnext<CR>", opts)
 map(N, "<C-,>", "<cmd>bprev<CR>", opts)
-map(N, "<C-c>", "<cmd>BufferDelete<CR>", opts)
+map(N, "<C-c>", "<cmd>bdelete<CR>", opts)
 
 --MAPS FOR EVOLUTE THE (JKHL) KEYNOTES
 map({ N, V }, "L", "<end>", { noremap = true })

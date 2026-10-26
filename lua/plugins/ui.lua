@@ -1,6 +1,7 @@
 return {
 	{
 		"romgrk/barbar.nvim",
+		enabled = false, -- sustituido por lua/explorer.lua
 		event = { "BufreadPre", "BufNewFile" },
 		dependencies = {
 			"lewis6991/gitsigns.nvim",
