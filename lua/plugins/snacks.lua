@@ -42,9 +42,13 @@ return {
 			{
 				"<leader>e",
 				function()
-					Snacks.picker.explorer({
-						cwd = vim.fn.expand("%:p:h"),
-					})
+					-- oil buffers are named "oil:///path/", which isn't a directory snacks can open
+					local dir = vim.bo.filetype == "oil" and require("oil").get_current_dir()
+						or vim.fn.expand("%:p:h")
+					if not dir or vim.fn.isdirectory(dir) == 0 then
+						dir = vim.fn.getcwd()
+					end
+					Snacks.picker.explorer({ cwd = dir })
 				end,
 				desc = "File explorer in CWD",
 			},
